@@ -10,7 +10,7 @@
 
 const { AS_OF, JURISDICTIONS: RAW } = require('./data');
 const { deepFreeze } = require('./freeze');
-const { parseDate, addDays, weekday, weekStart, ageOn, seasonDate, minutes, clock, describe } = require('./dates');
+const { parseDate, addDays, weekday, weekStart, ageOn, seasonDate, minutes, clock, describe, zoneFormat, instantOf } = require('./dates');
 
 const TABLES = deepFreeze(RAW);
 const ADULT_AGE = 18;
@@ -186,6 +186,8 @@ function rulesFor(jurisdiction, { age, on }) {
     maxHoursNonSchoolWeek: field((p) => p.band && p.band.maxHours.nonSchoolWeek, lower),
     maxHoursSchoolDayIncludingSchool: field((p) => p.band && p.band.maxHours.schoolDayIncludingSchool, lower),
     maxDaysPerWeek: field((p) => p.band && p.band.maxDaysPerWeek, lower),
+    maxConsecutiveDays: field((p) => p.band && p.band.maxConsecutiveDays, lower),
+    maxHoursIn24h: field((p) => p.band && p.band.maxHoursIn24h, lower),
     noWorkDuringSchoolHours: per.some((p) => p.band && p.band.noWorkDuringSchoolHours),
     summer: per.filter((p) => p.band && p.band.window.summer).map((p) => ({
       jurisdiction: p.layer,
@@ -217,21 +219,81 @@ function predicate(fn, name, fallback) {
 }
 
 /**
- * Read and check one shift.
+ * Read and check one shift. `start` and `end` stay wall-clock minutes (the
+ * time-of-day limits are wall-clock rules); the time worked is real minutes
+ * when the time zone is known.
  * @param {unknown} s
  * @param {number} i
+ * @param {string | undefined} timeZone
  */
-function readShift(s, i) {
+function readShift(s, i, timeZone) {
   if (!s || typeof s !== 'object') throw new TypeError(`shifts[${i}] must be an object`);
   parseDate(`shifts[${i}].date`, s.date);
   const start = minutes(`shifts[${i}].start`, s.start);
   let end = minutes(`shifts[${i}].end`, s.end);
   if (end <= start) end += 24 * 60; // ends after midnight
-  const breakMinutes = s.breakMinutes === undefined || s.breakMinutes === null ? 0 : s.breakMinutes;
-  if (!Number.isFinite(breakMinutes) || breakMinutes < 0 || breakMinutes >= end - start) {
+  let length = end - start;
+  if (timeZone) {
+    const from = instantOf(`shifts[${i}].start`, s.date, start, timeZone, -Infinity);
+    length = (instantOf(`shifts[${i}].end`, s.date, end, timeZone, from + 60000) - from) / 60000;
+  }
+  // Breaks placed in the shift ({ start, minutes }), or only their total.
+  let placed = null;
+  if (s.breaks !== undefined) {
+    if (!Array.isArray(s.breaks)) throw new TypeError(`shifts[${i}].breaks must be an array of { start, minutes }`);
+    placed = s.breaks.map((b, j) => {
+      const what = `shifts[${i}].breaks[${j}]`;
+      if (!b || typeof b !== 'object' || !Number.isInteger(b.minutes) || b.minutes <= 0) throw new TypeError(`${what} must be { start: 'HH:MM', minutes: whole minutes above 0 }`);
+      let at = minutes(`${what}.start`, b.start);
+      if (at < start) at += 24 * 60;
+      if (at < start || at + b.minutes > end) throw new TypeError(`${what} must lie inside the shift`);
+      return { at: at - start, minutes: b.minutes };
+    }).sort((a, b) => a.at - b.at);
+    for (let j = 1; j < placed.length; j++) if (placed[j].at < placed[j - 1].at + placed[j - 1].minutes) throw new TypeError(`shifts[${i}].breaks must not overlap`);
+  }
+  const placedTotal = placed ? placed.reduce((t, b) => t + b.minutes, 0) : null;
+  if (placed && s.breakMinutes !== undefined && s.breakMinutes !== null && s.breakMinutes !== placedTotal) {
+    throw new TypeError(`shifts[${i}].breakMinutes (${s.breakMinutes}) does not match its breaks (${placedTotal} minutes)`);
+  }
+  const breakMinutes = placed ? placedTotal : (s.breakMinutes === undefined || s.breakMinutes === null ? 0 : s.breakMinutes);
+  if (!Number.isFinite(breakMinutes) || breakMinutes < 0 || breakMinutes >= length) {
     throw new TypeError(`shifts[${i}].breakMinutes must be 0 or more and shorter than the shift`);
   }
-  return { index: i, id: s.id, date: s.date, start, end, breakMinutes, worked: end - start - breakMinutes };
+  return { index: i, id: s.id, date: s.date, start, end, breakMinutes, placed, worked: length - breakMinutes, length };
+}
+
+const OPTIONS = ['jurisdiction', 'birthDate', 'shifts', 'schoolDays', 'vacationDays', 'schoolHours', 'weekStartsOn', 'hasWorkPermit', 'timeZone'];
+
+/**
+ * Does a shift break a meal rule ("no more than N hours of work without a
+ * break of M minutes")? With the breaks placed, every stretch of work between
+ * breaks of M minutes or more is held to N hours. With only a total, the
+ * total must cover the fewest breaks that could split the work into lawful
+ * stretches, and the result says the timing was not checked ('unchecked').
+ * @param {{ placed: Array<{ at: number, minutes: number }> | null, length: number, worked: number, breakMinutes: number }} s
+ * @param {{ afterHours: number, minutes: number, op: string }} mb
+ * @returns {null | 'unchecked' | { fields: object, message: string }}
+ */
+function mealFault(s, mb) {
+  const limit = mb.afterHours * 60;
+  const tooLong = (mins) => (mb.op === '>=' ? mins >= limit : mins > limit);
+  const rule = `${mb.op === '>=' ? '' : 'more than '}${mb.afterHours} hours`;
+  if (s.placed) {
+    let from = 0; let longest = 0;
+    for (const b of s.placed) {
+      const stretch = b.at - from - s.placed.filter((x) => x.at >= from && x.at < b.at).reduce((t, x) => t + x.minutes, 0);
+      if (b.minutes >= mb.minutes) { longest = Math.max(longest, stretch); from = b.at + b.minutes; }
+    }
+    longest = Math.max(longest, s.length - from - s.placed.filter((x) => x.at >= from).reduce((t, x) => t + x.minutes, 0));
+    if (!tooLong(longest)) return null;
+    return { fields: { limit: mb.afterHours, actual: Math.round(longest) / 60 }, message: `${Math.round(longest) / 60} hours worked without a ${mb.minutes}-minute break; no ${rule} are allowed` };
+  }
+  const needed = mb.op === '>=' ? Math.floor(s.worked / limit) : Math.max(0, Math.ceil(s.worked / limit) - 1);
+  if (!needed) return null;
+  if (s.breakMinutes < needed * mb.minutes) {
+    return { fields: { limit: needed * mb.minutes, actual: s.breakMinutes }, message: `${s.worked / 60} hours of work need ${needed} break${needed === 1 ? '' : 's'} of ${mb.minutes} minutes so that no stretch runs ${rule}` };
+  }
+  return 'unchecked';
 }
 
 /**
@@ -250,10 +312,17 @@ function readShift(s, i) {
  * @param {number} [input.weekStartsOn] - the employer's fixed workweek, 0 = Sunday (default) … 6
  * @param {boolean} [input.hasWorkPermit] - false reports a missing permit as a breach;
  *   omitted, a required permit is listed in `requirements`
+ * @param {string} [input.timeZone] - IANA zone of the workplace: hours are counted as real time across a daylight-saving change
  * @returns {object}
  */
 function checkSchedule(input) {
   if (!input || typeof input !== 'object') throw new TypeError('checkSchedule takes an options object');
+  for (const k of Object.keys(input)) if (!OPTIONS.includes(k)) throw new TypeError(`Unknown option ${describe(k)}; expected one of ${OPTIONS.join(', ')}`);
+  const timeZone = input.timeZone;
+  if (timeZone !== undefined) {
+    if (typeof timeZone !== 'string') throw new TypeError('timeZone must be a string');
+    zoneFormat(timeZone);
+  }
   const code = normalizeJurisdiction(input.jurisdiction);
   parseDate('birthDate', input.birthDate);
   if (!Array.isArray(input.shifts)) throw new TypeError('shifts must be an array');
@@ -269,7 +338,7 @@ function checkSchedule(input) {
   const schoolStart = minutes('schoolHours.start', schoolHours.start);
   const schoolEnd = minutes('schoolHours.end', schoolHours.end);
   if (schoolEnd <= schoolStart) throw new TypeError('schoolHours.end must be after schoolHours.start');
-  const shifts = input.shifts.map(readShift);
+  const shifts = input.shifts.map((s, i) => readShift(s, i, timeZone));
 
   const result = { jurisdiction: code, known: true, violations: [], requirements: [], notes: [], assumptions };
   const minorShifts = shifts.filter((s) => ageOn(input.birthDate, s.date) < ADULT_AGE);
@@ -282,6 +351,7 @@ function checkSchedule(input) {
     result.violations.push({ rule, ...fields, ...source.sources[0], alsoSetBy: source.sources.slice(1).map((s) => s.jurisdiction), message });
   };
   const usedSchoolHours = { flag: false };
+  const usedBreakTotals = { flag: false };
   const notesSeen = new Set();
   const permitsSeen = new Set();
 
@@ -330,9 +400,10 @@ function checkSchedule(input) {
         `A worker of ${age} may not work during school hours on a school day`);
     }
     for (const mb of rules.mealBreaks) {
-      if (s.end - s.start > mb.afterHours * 60 && s.breakMinutes < mb.minutes) {
-        breach('meal_break', { date: s.date, shift: s.index, id: s.id, limit: mb.minutes, actual: s.breakMinutes }, { sources: [cite({ layer: mb.jurisdiction, band: { citations: mb.citations, confidence: mb.confidence, note: mb.note } })] },
-          `A shift longer than ${mb.afterHours} hours needs a ${mb.minutes}-minute break`);
+      const fault = mealFault(s, mb);
+      if (fault === 'unchecked') usedBreakTotals.flag = true;
+      else if (fault) {
+        breach('meal_break', { date: s.date, shift: s.index, id: s.id, ...fault.fields }, { sources: [cite({ layer: mb.jurisdiction, band: { citations: mb.citations, confidence: mb.confidence, note: mb.note } })] }, fault.message);
       }
     }
   }
@@ -381,7 +452,46 @@ function checkSchedule(input) {
     }
   }
 
+  // Hours in any 24 hours, where a state counts them that way: every window
+  // that opens at the start of a shift.
+  const absolute = (s) => {
+    const d = parseDate('date', s.date);
+    const base = Date.UTC(d.year, d.month - 1, d.day) / 60000;
+    return { from: base + s.start, to: base + s.end, rate: s.worked / (s.end - s.start) };
+  };
+  const spans = minorShifts.map((s) => ({ s, ...absolute(s) })).sort((a, b) => a.from - b.from);
+  let coveredUntil = -Infinity;
+  for (const w of spans) {
+    const age = ageOn(input.birthDate, w.s.date);
+    const limit = rulesFor(code, { age, on: w.s.date }).maxHoursIn24h;
+    if (!limit || w.from < coveredUntil) continue;
+    const until = w.from + 24 * 60;
+    const worked = spans.reduce((t, x) => t + Math.max(0, Math.min(x.to, until) - Math.max(x.from, w.from)) * x.rate, 0);
+    if (worked > limit.value * 60) {
+      coveredUntil = until;
+      const hours = Math.round(worked) / 60;
+      breach('max_hours_in_24h', { date: w.s.date, shift: w.s.index, id: w.s.id, limit: limit.value, actual: hours }, limit,
+        `${hours} hours in the 24 hours from ${clock(w.s.start)} on ${w.s.date}; the limit at ${age} is ${limit.value}`);
+    }
+  }
+
+  // Consecutive days worked, across workweeks.
+  const dates = [...new Set(minorShifts.map((s) => s.date))].sort();
+  let run = 0; let flagged = false;
+  dates.forEach((d, k) => {
+    run = k > 0 && addDays(dates[k - 1], 1) === d ? run + 1 : 1;
+    if (run === 1) flagged = false;
+    const age = ageOn(input.birthDate, d);
+    const limit = rulesFor(code, { age, on: d }).maxConsecutiveDays;
+    if (limit && run > limit.value && !flagged) {
+      flagged = true;
+      breach('max_consecutive_days', { date: d, limit: limit.value, actual: run }, limit,
+        `${run} consecutive days worked by ${d}; the limit at ${age} is ${limit.value}`);
+    }
+  });
+
   if (usedSchoolHours.flag && input.schoolHours === undefined) assumptions.push('school_hours_default_07_15');
+  if (usedBreakTotals.flag) assumptions.push('break_timing_unchecked');
   return result;
 }
 

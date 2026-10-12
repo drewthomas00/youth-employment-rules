@@ -99,6 +99,8 @@ test('every entry is well formed', () => {
     for (const b of e.bands) {
       assert.ok(b.minAge <= b.maxAge, code);
       assert.ok(['high', 'medium'].includes(b.confidence), code);
+      for (const k of ['maxDaysPerWeek', 'maxConsecutiveDays', 'maxHoursIn24h']) assert.ok(b[k] === null || (Number.isInteger(b[k]) && b[k] > 0), `${code} ${k}`);
+      if (b.mealBreak) assert.ok(['>', '>='].includes(b.mealBreak.op) && b.mealBreak.afterHours > 0 && b.mealBreak.minutes > 0, `${code} mealBreak`);
       assert.ok(b.citations.length > 0 && b.citations.every((c) => /^https?:\/\//.test(c.sourceUrl)), `${code} cites`);
       for (const k of ['earliestStartSchoolDay', 'earliestStartNonSchoolDay', 'latestEndBeforeSchoolDay', 'latestEndBeforeNonSchoolDay']) {
         assert.ok(b.window[k] === null || time.test(b.window[k]), `${code} ${k}`);
@@ -153,4 +155,48 @@ test('meal breaks are the rules written for minors; a rule for all employees is 
   assert.deepEqual(rulesFor('US-CA', { age: 16, on: SAT }).mealBreaks, []);
   // Ohio's is written for minors: 30 minutes after 5 hours.
   assert.deepEqual(rules(run('US-OH', SIXTEEN, [{ date: SAT, start: '09:00', end: '15:00' }], { hasWorkPermit: true })), ['meal_break']);
+});
+
+// Second review, 2026-10-11: each case passed an unlawful schedule before.
+
+test('a meal rule holds every stretch of work when the breaks are placed', () => {
+  // Virginia under 16: no more than 5 hours continuously without 30 minutes.
+  const early = run('US-VA', FIFTEEN, [{ date: SAT, start: '09:00', end: '15:30', breaks: [{ start: '09:30', minutes: 30 }] }], { hasWorkPermit: true });
+  assert.deepEqual(rules(early), ['meal_break']);
+  assert.equal(early.violations[0].actual, 5.5);
+  const ok = run('US-VA', FIFTEEN, [{ date: SAT, start: '09:00', end: '15:30', breaks: [{ start: '12:00', minutes: 30 }] }], { hasWorkPermit: true });
+  assert.deepEqual(rules(ok), []);
+  assert.ok(!ok.assumptions.includes('break_timing_unchecked'));
+  // With only a total, the timing is reported as unchecked.
+  const total = run('US-VA', FIFTEEN, [{ date: SAT, start: '09:00', end: '15:30', breakMinutes: 30 }], { hasWorkPermit: true });
+  assert.deepEqual(rules(total), []);
+  assert.ok(total.assumptions.includes('break_timing_unchecked'));
+  assert.throws(() => run('US-VA', FIFTEEN, [{ date: SAT, start: '09:00', end: '15:30', breakMinutes: 20, breaks: [{ start: '12:00', minutes: 30 }] }]), /does not match/);
+});
+
+test('a meal rule at its own threshold: Oregon, 6 hours exactly', () => {
+  assert.deepEqual(rules(run('US-OR', SIXTEEN, [{ date: SAT, start: '09:00', end: '15:00' }], { hasWorkPermit: true })), ['meal_break']);
+  assert.deepEqual(rules(run('US-OR', SIXTEEN, [{ date: SAT, start: '09:00', end: '14:59' }], { hasWorkPermit: true })), []);
+});
+
+test('consecutive days across workweeks: Maine, 6', () => {
+  const days = ['2026-07-08', '2026-07-09', '2026-07-10', '2026-07-11', '2026-07-12', '2026-07-13', '2026-07-14', '2026-07-15'];
+  const r = run('US-ME', '2009-01-01', days.map((date) => ({ date, start: '09:00', end: '13:00' })), { hasWorkPermit: true, vacationDays: days });
+  assert.deepEqual(rules(r), ['max_consecutive_days']);
+  assert.equal(r.violations[0].date, '2026-07-14');
+  assert.equal(r.violations[0].actual, 7);
+});
+
+test('hours in any 24: Colorado, 8', () => {
+  const r = run('US-CO', SIXTEEN, [{ date: '2026-10-12', start: '14:00', end: '22:00' }, { date: '2026-10-13', start: '06:00', end: '14:00' }]);
+  assert.ok(rules(r).includes('max_hours_in_24h'));
+});
+
+test('Maryland 16-17: 12 hours on a day without school', () => {
+  assert.deepEqual(rules(run('US-MD', SIXTEEN, [{ date: SAT, start: '06:00', end: '20:00', breaks: [{ start: '10:00', minutes: 30 }, { start: '14:00', minutes: 30 }, { start: '17:30', minutes: 30 }] }], { hasWorkPermit: true })), ['max_hours_non_school_day']);
+});
+
+test('Hawaii 14-15: 7 p.m. on a term-time Saturday, even in August', () => {
+  assert.deepEqual(rules(run('US-HI', FIFTEEN, [{ date: '2026-08-15', start: '17:00', end: '20:30' }], { hasWorkPermit: true })), ['ends_too_late']);
+  assert.deepEqual(rules(run('US-HI', FIFTEEN, [{ date: '2026-08-15', start: '17:00', end: '20:30' }], { hasWorkPermit: true, vacationDays: ['2026-08-15'] })), []);
 });

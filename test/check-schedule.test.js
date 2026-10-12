@@ -159,3 +159,15 @@ test('rulesFor names the law that binds', () => {
   assert.equal(r.maxHoursSchoolDay.value, 3);
   assert.equal(r.maxHoursSchoolDay.sources[0].jurisdiction, 'US');
 });
+
+test('with a time zone, a shift across a daylight-saving change counts real hours', () => {
+  // Alaska sets no clock limit at 16-17 but a meal break after 5 hours. Anchorage
+  // falls back at 02:00 on 2026-11-01: 22:00 to 03:00 is 6 real hours, not 5.
+  const shifts = [{ date: '2026-10-31', start: '22:00', end: '03:00' }];
+  const run = (extra) => checkSchedule({ jurisdiction: 'US-AK', birthDate: '2010-01-10', shifts, hasWorkPermit: true, ...extra });
+  assert.deepEqual(run({}).violations.map((v) => v.rule), []);
+  assert.deepEqual(run({ timeZone: 'America/Anchorage' }).violations.map((v) => v.rule), ['meal_break']);
+  assert.throws(() => checkSchedule({ jurisdiction: 'US-TX', birthDate: '2011-06-15', shifts: [{ date: '2026-03-08', start: '02:30', end: '06:00' }], timeZone: 'America/Chicago' }), /does not exist/);
+  assert.throws(() => checkSchedule({ jurisdiction: 'US-TX', birthDate: '2011-06-15', shifts: [], timeZone: 'Mars/Olympus' }), /timeZone/);
+  assert.throws(() => checkSchedule({ jurisdiction: 'US-TX', birthDate: '2011-06-15', shifts: [], timezone: 'UTC' }), /Unknown option/);
+});

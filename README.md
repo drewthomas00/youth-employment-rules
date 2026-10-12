@@ -65,14 +65,15 @@ checkSchedule({
 |---|---|---|
 | `jurisdiction` | — | `'US-CA'`, or `{ country: 'US', subdivision: 'CA' }`. Where the work is done. |
 | `birthDate` | — | `'YYYY-MM-DD'`. A 29 February birthday is reached on 1 March in a common year. |
-| `shifts` | — | `{ date, start, end, breakMinutes?, id? }`. Times are `'HH:MM'`; an end at or before the start runs past midnight. A shift counts toward the day it starts. Pass every shift in the weeks you check — a weekly limit sees only what you pass. |
+| `shifts` | — | `{ date, start, end, breaks?, breakMinutes?, id? }`. Times are `'HH:MM'`; an end at or before the start runs past midnight. A shift counts toward the day it starts. `breaks` (`{ start, minutes }`) places unpaid breaks so a meal rule's stretches of work are checked; with only `breakMinutes`, the total is checked and `assumptions` says `break_timing_unchecked`. Pass every shift in the weeks you check — a weekly, consecutive-day or 24-hour limit sees only what you pass. |
 | `schoolDays` | every Monday–Friday | The days school is in session: a function `(date) => boolean`, an array or a Set. The default is the strictest reading, and is reported in `assumptions`. |
 | `vacationDays` | none | Days of a school vacation, for the rules that loosen then. A vacation day is never a school day. |
 | `schoolHours` | 07:00–15:00 | For the "not during school hours" and "school plus work" rules. The default is reported in `assumptions` when a rule used it. |
 | `weekStartsOn` | `0` (Sunday) | The employer's fixed workweek, which weekly limits are counted over. |
 | `hasWorkPermit` | — | `false` reports a required permit as a breach; omitted, it is listed in `requirements`. |
+| `timeZone` | — | The workplace's IANA zone, e.g. `'America/Chicago'`. Hours worked are then real time, so an overnight shift across a daylight-saving change counts the hour it gains or loses. Without it, hours are wall-clock hours. |
 
-Workers 18 and older are not checked: child labor limits stop at 18 everywhere, whatever the age of majority.
+Workers 18 and older are not checked: child labor limits stop at 18 everywhere, whatever the age of majority. Unknown option names throw.
 
 ### Breaches
 
@@ -82,11 +83,13 @@ Workers 18 and older are not checked: child labor limits stop at 18 everywhere, 
 | `work_permit_missing` | shift | A permit is required and `hasWorkPermit` was `false`. |
 | `starts_too_early` / `ends_too_late` | shift | Outside the day's window (school-year, summer or vacation). |
 | `during_school_hours` | shift | On a school day, overlapping school hours, where the law bars it. |
-| `meal_break` | shift | Longer than the rule's hours without a break of the rule's minutes. |
+| `meal_break` | shift | A stretch of work longer than the rule allows without a break of the rule's minutes (with only a total, too little break time for the shift). |
 | `max_hours_school_day` / `max_hours_non_school_day` | day | Hours worked that day, breaks excluded. |
 | `max_hours_including_school` | day | School hours plus work over the limit. |
 | `max_hours_school_week` / `max_hours_non_school_week` | week | A school week is any week with a school day in it. |
 | `max_days_per_week` | week | Days worked in the workweek. |
+| `max_consecutive_days` | run of days | Days worked in a row, across workweeks (Maine, New Hampshire, Pennsylvania, Hawaii). |
+| `max_hours_in_24h` | 24 hours | Hours worked in the 24 hours from the start of a shift (Colorado, Illinois). |
 
 A weekly limit uses the youngest age the worker is during that week. A daily or per-shift limit uses their age that day.
 
@@ -130,8 +133,8 @@ As of 2026-10-11. "Permit" is the age below which a work permit or employment ce
 | US-DE | 14 | under 18 | 14–15, 16–17 | high |  |
 | US-FL | 14 | — | 14–15, 16–17 | high |  |
 | US-GA | 12 | under 16 | 12–15, 16–17 | high |  |
-| US-HI | 14 | under 18 | 14–15, 16–17 | high, medium |  |
-| US-IA | 14 | — | 14–15, 16–17 | high |  |
+| US-HI | 14 | under 18 | 14–15, 16–17 | high |  |
+| US-IA | 14 | — | 14–15, 16–17 | high | 2023-07-01 |
 | US-ID | 14 | — | 14–15, 16–17 | high |  |
 | US-IL | 14 | under 16 | 14–15, 16–17 | high | 2025-01-01 |
 | US-IN | 14 | — | 14–15, 16–17 | medium | 2025-01-01 |
@@ -146,25 +149,25 @@ As of 2026-10-11. "Permit" is the age below which a work permit or employment ce
 | US-MO | 14 | under 16 | 14–15, 16–17 | high |  |
 | US-MS | — | — | 14–15, 16–17 | medium |  |
 | US-MT | 14 | — | 14–15, 16–17 | high |  |
-| US-NC | 14 | under 18 | 14–15, 16–17 | high, medium |  |
+| US-NC | 14 | under 18 | 14–15, 16–17 | high |  |
 | US-ND | 14 | under 16 | 14–15, 16–17 | high |  |
-| US-NE | 14 | under 16 | 14–15, 16–17 | high, medium |  |
+| US-NE | 14 | under 16 | 14–15, 16–17 | high |  |
 | US-NH | 12 | under 16 | 14–15, 16–17 | high |  |
 | US-NJ | 14 | under 18 | 14–15, 16–17 | medium |  |
 | US-NM | 14 | under 16 | 14–15, 16–17 | high, medium |  |
-| US-NV | — | under 14 | 14–15, 16–17 | high |  |
+| US-NV | — | under 14 | 14–15, 16–17 | high | 2025-10-01 |
 | US-NY | 14 | under 18 | 14–15, 16–17 | high, medium |  |
 | US-OH | 14 | under 18 | 14–15, 16–17 | high |  |
-| US-OK | 14 | under 16 | 14–15, 16–17 | medium |  |
+| US-OK | 14 | under 16 | 14–15, 16–17 | high, medium |  |
 | US-OR | 14 | under 18 | 14–15, 16–17 | medium |  |
 | US-PA | 14 | under 18 | 14–15, 16–17 | high |  |
 | US-RI | 14 | under 16 | 14–15, 16–17 | high |  |
-| US-SC | 14 | — | 14–15, 16–17 | medium |  |
+| US-SC | 14 | — | 14–15, 16–17 | high |  |
 | US-SD | — | — | 0–13, 14–15, 16–17 | high |  |
 | US-TN | 14 | — | 14–15, 16–17 | medium |  |
 | US-TX | 14 | — | 14–15, 16–17 | high |  |
-| US-UT | — | — | 14–15, 16–17 | high | 2024-05-01 |
-| US-VA | 14 | under 16 | 14–15, 16–17 | high, medium |  |
+| US-UT | — | — | 14–15, 16–17 | medium | 2024-05-01 |
+| US-VA | 14 | under 16 | 14–15, 16–17 | high |  |
 | US-VT | 14 | under 16 | 14–15, 16–17 | high |  |
 | US-WA | 14 | under 18 | 14–15, 16–17 | high | 2026-07-01 |
 | US-WI | 14 | under 16 | 14–15, 16–17 | high | 2026-06-01 |
@@ -173,9 +176,18 @@ As of 2026-10-11. "Permit" is the age below which a work permit or employment ce
 
 Federal law covers most employers (any enterprise with $500,000 in annual sales, and many smaller ones through individual coverage). The checker always applies it alongside the state's.
 
+## Known limitations
+
+- **Rules the shape cannot hold are noted, not checked:** Maryland's and Delaware's 8 consecutive hours free of work and school (encoded as a daily cap where it implies one), Kentucky's, Oregon's and Utah's paid rest breaks for minors, conditions that turn on facts the input does not carry (a parent's consent, a diploma, the industry, an employer outside the FLSA). Each is in its band's `note`, and the stricter reading is encoded.
+- **Meal timing needs placed breaks.** With only `breakMinutes`, the checker can tell that a shift has too little break time, not that the break came too late.
+- **Without `timeZone`, hours are wall-clock hours.** A shift across a daylight-saving change is off by an hour.
+- **School calendars are yours to supply.** The default — every weekday is a school day, and school runs 07:00–15:00 — is the strictest reading and is reported in `assumptions`.
+- **Some entries rest on an agency summary or an unofficial copy** (`confidence: 'medium'`); see the coverage table.
+- **Not reviewed by a lawyer.**
+
 ## How the tables were checked
 
-Each limit's `citations` name the provisions it comes from, and each `sourceUrl` links the text. The tables were compiled with AI-assisted research against those sources, on the date in `AS_OF` (see [Authorship](#authorship)). **They have not been reviewed by a lawyer.** Where a statute was ambiguous or conditional, the stricter reading is encoded and the `note` says so.
+Each limit's `citations` name the provisions it comes from, and each `sourceUrl` links the text. The tables were compiled with AI-assisted research against those sources, on the date in `AS_OF`, and every jurisdiction was then checked a second time, independently, against the primary text (see [Authorship](#authorship)). **They have not been reviewed by a lawyer.** Where a statute was ambiguous or conditional, the stricter reading is encoded and the `note` says so.
 
 ## Not legal advice
 

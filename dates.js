@@ -3,6 +3,8 @@
 /**
  * Calendar arithmetic on 'YYYY-MM-DD' strings. Every date here is a civil date
  * on the employer's own calendar, so nothing reads the machine's time zone.
+ * Given the workplace's time zone, a shift's length is the real time elapsed,
+ * so a shift across a daylight-saving change counts the hour it gains or loses.
  */
 
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
@@ -156,4 +158,67 @@ function describe(value) {
   return typeof value === 'string' ? JSON.stringify(value) : String(value);
 }
 
-module.exports = { parseDate, addDays, weekday, weekStart, ageOn, seasonDate, minutes, clock, describe, isLeapYear };
+// ── Time zones ───────────────────────────────────────────────────────
+
+/** @type {Map<string, Intl.DateTimeFormat>} */
+const FORMATS = new Map();
+
+/**
+ * A formatter that reads an instant on `timeZone`'s wall clock; throws a
+ * TypeError for a zone the runtime does not know.
+ * @param {string} timeZone
+ * @returns {Intl.DateTimeFormat}
+ */
+function zoneFormat(timeZone) {
+  let f = FORMATS.get(timeZone);
+  if (!f) {
+    try {
+      f = new Intl.DateTimeFormat('en-US', { timeZone, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    } catch {
+      throw new TypeError(`timeZone must be an IANA time zone like 'America/Chicago', got ${describe(timeZone)}`);
+    }
+    FORMATS.set(timeZone, f);
+  }
+  return f;
+}
+
+/**
+ * The wall-clock reading of an instant on `timeZone`, as UTC milliseconds.
+ * @param {number} epoch
+ * @param {string} timeZone
+ * @returns {number}
+ */
+function wallAt(epoch, timeZone) {
+  /** @type {Record<string, number>} */
+  const p = {};
+  for (const part of zoneFormat(timeZone).formatToParts(new Date(epoch))) if (part.type !== 'literal') p[part.type] = Number(part.value);
+  return Date.UTC(p.year, p.month - 1, p.day, p.hour === 24 ? 0 : p.hour, p.minute, p.second);
+}
+
+/**
+ * The earliest instant, not before `notBefore`, at which `timeZone`'s clock
+ * reads `mins` minutes after the midnight that begins `date`. Throws for a
+ * time that does not exist that day (the clocks go forward over it).
+ * @param {string} what - names the value in the error
+ * @param {string} date
+ * @param {number} mins
+ * @param {string} timeZone
+ * @param {number} notBefore
+ * @returns {number}
+ */
+function instantOf(what, date, mins, timeZone, notBefore) {
+  const d = parseDate('date', date);
+  const wall = Date.UTC(d.year, d.month - 1, d.day) + mins * 60000;
+  const found = [];
+  for (const probe of [wall - 43200000, wall, wall + 43200000]) {
+    const epoch = wall - (wallAt(probe, timeZone) - probe);
+    if (wallAt(epoch, timeZone) === wall && !found.includes(epoch)) found.push(epoch);
+  }
+  found.sort((a, b) => a - b);
+  if (!found.length) throw new TypeError(`${what} does not exist on ${date} in ${timeZone} (the clocks go forward)`);
+  const ok = found.find((e) => e >= notBefore);
+  if (ok === undefined) throw new TypeError(`${what} comes before the start of its shift`);
+  return ok;
+}
+
+module.exports = { parseDate, addDays, weekday, weekStart, ageOn, seasonDate, minutes, clock, describe, isLeapYear, zoneFormat, instantOf };

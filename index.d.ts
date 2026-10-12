@@ -46,9 +46,14 @@ export interface Rules {
   readonly maxHoursNonSchoolWeek: Limit<number> | null;
   readonly maxHoursSchoolDayIncludingSchool: Limit<number> | null;
   readonly maxDaysPerWeek: Limit<number> | null;
+  /** days in a row, across workweeks */
+  readonly maxConsecutiveDays: Limit<number> | null;
+  /** hours in any 24 hours, from the start of each shift */
+  readonly maxHoursIn24h: Limit<number> | null;
   readonly noWorkDuringSchoolHours: boolean;
   readonly summer: ReadonlyArray<{ jurisdiction: string; from: string; to: string; latestEnd: string }>;
-  readonly mealBreaks: ReadonlyArray<Source & { afterHours: number; minutes: number }>;
+  /** no stretch of work longer than afterHours ('>'), or as long as it ('>='), without a break of `minutes` */
+  readonly mealBreaks: ReadonlyArray<Source & { afterHours: number; op: '>' | '>='; minutes: number }>;
   readonly personalCareNotes: ReadonlyArray<{ jurisdiction: string; note: string }>;
 }
 
@@ -64,8 +69,10 @@ export interface Shift {
   date: string;
   start: string;
   end: string;
-  /** an unpaid meal break inside the shift, in minutes */
+  /** unpaid breaks inside the shift, in minutes: the total */
   breakMinutes?: number;
+  /** or the breaks themselves, so a meal rule's stretches can be checked; their total must match breakMinutes if both are given */
+  breaks?: ReadonlyArray<{ start: string; minutes: number }>;
   /** yours, echoed on each breach */
   id?: unknown;
 }
@@ -90,6 +97,8 @@ export interface CheckScheduleInput {
   weekStartsOn?: number;
   /** false reports a missing required permit as a breach; omitted, it is listed in `requirements` */
   hasWorkPermit?: boolean;
+  /** IANA zone of the workplace, e.g. 'America/Chicago': hours worked are then real time across a daylight-saving change. Default: wall-clock time */
+  timeZone?: string;
 }
 
 export type RuleId =
@@ -104,7 +113,9 @@ export type RuleId =
   | 'max_hours_including_school'
   | 'max_hours_school_week'
   | 'max_hours_non_school_week'
-  | 'max_days_per_week';
+  | 'max_days_per_week'
+  | 'max_consecutive_days'
+  | 'max_hours_in_24h';
 
 /** One breach: the rule, where it bites, and the law that sets it. */
 export interface Violation extends Source {
@@ -123,7 +134,8 @@ export interface Violation extends Source {
   readonly message: string;
 }
 
-export type Assumption = 'school_days_default_weekdays' | 'school_hours_default_07_15';
+/** a default the checker used, or a rule it could only check in part */
+export type Assumption = 'school_days_default_weekdays' | 'school_hours_default_07_15' | 'break_timing_unchecked';
 
 export interface CheckResult {
   readonly jurisdiction: string;

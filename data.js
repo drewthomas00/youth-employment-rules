@@ -34,6 +34,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -73,6 +75,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -110,7 +114,7 @@ const JURISDICTIONS = {
       "citation": "Alaska Stat. § 23.10.332; 8 AAC 05.045",
       "sourceUrl": "https://www.akleg.gov/basis/aac.asp?media=print&secStart=8.05.010&secEnd=8.05.990",
       "confidence": "high",
-      "note": "Individual permit is per job (new permit for each new job) and the minor may not start until it is approved. Alternative 'general duties' route (AS 23.10.332(c), 8 AAC 05.045(b)-(c)): employer pre-clears specific job duties for an age range, then files the parent's written consent within 7 days of the minor starting (valid for the calendar year). 17-year-olds also need a permit if the employer holds an alcohol license (restaurant designation). Emancipated minors and employers employing only minors in approved work-training/apprenticeship/vocational programs are exempt (8 AAC 05.040(e)-(f))."
+      "note": "Individual permit is per job (new permit for each new job) and the minor may not start until it is approved. Alternative 'general duties' route (AS 23.10.332(c), 8 AAC 05.045(b)-(c)): employer pre-clears specific job duties for an age range, then files the parent's written consent within 7 days of the minor starting (valid for the calendar year). Per the Department's summary (labor.alaska.gov/lss/childlaw.htm), 17-year-olds also need a permit where the employer holds an alcohol license. Emancipated minors and employers employing only minors in approved work-training/apprenticeship/vocational programs are exempt (8 AAC 05.040(e)-(f))."
     },
     "personalCareNote": "Alaska bars 14-15-year-olds from occupations involving sharpened tools (8 AAC 05.010(14)) and from power-driven machinery other than office machines (8 AAC 05.010(2)); read plainly this reaches shears, razors and clippers, so at 14-15 keep personal-care work to front-desk and cleanup duties. The under-18 bloodborne-pathogens bar (8 AAC 05.115) is limited by its text to hospitals, clinics and medical/dental offices.",
     "bands": [
@@ -121,10 +125,12 @@ const JURISDICTIONS = {
           "schoolDay": null,
           "nonSchoolDay": 9,
           "schoolWeek": 23,
-          "nonSchoolWeek": 40,
+          "nonSchoolWeek": 23,
           "schoolDayIncludingSchool": 9
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": "05:00",
@@ -136,6 +142,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -157,7 +164,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "Statute caps SCHOOL ATTENDANCE + WORK at 9 hours combined per day (no separate work-only cap on a school day), work only 5 a.m.–9 p.m. every day, and 'employment outside school hours' at 23 hours per week. The 40 h/week figure for school vacations comes from the Department's official summary/work-permit form, not the statute text; the 9-hour non-school-day figure is the statute's combined cap with zero school hours (the permit form's 'eight hours a day' during breaks is a Department statement, not statute). The statute does not expressly bar work during school hours, but 8 AAC 05.030(b) permits work training during school hours only with a written school coordinator/principal statement on file — treat school-hours work as needing that. Break: a minor scheduled 6+ consecutive hours gets a 30-minute break (after the first 1.5 h, before the last hour); one who works 5 consecutive hours without a break gets 30 minutes before continuing; may be modified by CBA or occasional mutual agreement; does not apply to family employers. Approved work-training/apprenticeship enrollees are exempt from the hours limits (8 AAC 05.030(a))."
+        "note": "Statute caps SCHOOL ATTENDANCE + WORK at 9 hours combined per day (no separate work-only cap on a school day), work only 5 a.m.–9 p.m. every day, and 'employment outside school hours' at 23 hours per week. The 40 h/week figure for school vacations comes from the Department's official summary/work-permit form, not the statute text; the 9-hour non-school-day figure is the statute's combined cap with zero school hours (the permit form's 'eight hours a day' during breaks is a Department statement, not statute). The statute does not expressly bar work during school hours, but 8 AAC 05.030(b) permits work training during school hours only with a written school coordinator/principal statement on file — treat school-hours work as needing that. Break: a minor scheduled 6+ consecutive hours gets a 30-minute break (after the first 1.5 h, before the last hour); one who works 5 consecutive hours without a break gets 30 minutes before continuing; may be modified by CBA or occasional mutual agreement; does not apply to family employers. Approved work-training/apprenticeship enrollees are exempt from the hours limits (8 AAC 05.030(a)). AS 23.10.340(a) caps work outside school hours at 23 hours a week with no school-session qualifier; the Department's 40 for vacations is not followed (23 encoded, stricter)."
       },
       {
         "minAge": 16,
@@ -170,6 +177,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -181,6 +190,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -225,6 +235,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -239,6 +251,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -256,7 +269,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "During the school session: 7 a.m.-7 p.m., 3 h/school day, 18 h/school week. During SCHOOL SUMMER VACATION: 7 a.m.-9 p.m., 8 h/day, 40 h/week, 6 days (encoded as `vacation`, since the state ties it to the school's vacation, not dates). Meal/rest: no more than 5 hours continuously without a documented 30-minute interval (shorter breaks do not interrupt). A 14-15-year-old whose school attendance was waived may, on superintendent recommendation and inspector approval, work during school hours (8 h/day, 40 h/week, 6 days, 7 a.m.-9 p.m.; § 25-8-37). Minors who completed the secondary course of study are not barred from school-hours work."
+        "note": "During the school session: 7 a.m.-7 p.m., 3 h/school day, 18 h/school week. During SCHOOL SUMMER VACATION: 7 a.m.-9 p.m., 8 h/day, 40 h/week, 6 days (encoded as `vacation`, since the state ties it to the school's vacation, not dates). Meal/rest: no more than 5 hours continuously without a documented 30-minute interval (shorter breaks do not interrupt). A 14-15-year-old whose school attendance was waived may, on superintendent recommendation and inspector approval, work during school hours (8 h/day, 40 h/week, 6 days, 7 a.m.-9 p.m.; § 25-8-37). Minors who completed the secondary course of study are not barred from school-hours work. The 9 p.m. end is for school summer vacation only; on another vacation day federal law's 7 p.m. binds outside June 1–Labor Day."
       },
       {
         "minAge": 16,
@@ -269,6 +282,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": null,
@@ -314,6 +329,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -348,6 +365,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -382,6 +401,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -421,6 +442,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -455,6 +478,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -507,6 +532,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -542,6 +569,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -581,6 +610,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": "05:00",
@@ -630,9 +661,11 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": 8,
         "window": {
           "earliestStartSchoolDay": "05:00",
-          "earliestStartNonSchoolDay": "05:00",
+          "earliestStartNonSchoolDay": null,
           "latestEndBeforeSchoolDay": "21:30",
           "latestEndBeforeNonSchoolDay": null,
           "summer": null,
@@ -651,7 +684,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "STATE-only limits (CDLE INFO #22 also prints the federal 3 h/18 h/7 a.m.-7 p.m. rules, which are FLSA, not Colorado). After school hours on a school day: at most 6 hours, unless the next day is not a school day (6 is kept as the stricter value). No work 9:30 p.m.-5:00 a.m. when the next day is a school day; Colorado sets NO time-of-day limit on a night before a non-school day (latestEndBeforeNonSchoolDay null = no state rule). Any minor: max 8 hours in any 24-hour period and 40 h/week (the Division may authorize more in an emergency). No work during school hours except with a school release permit under § 8-12-113 (up to 30 days, parent approval). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package."
+        "note": "STATE-only limits (CDLE INFO #22 also prints the federal 3 h/18 h/7 a.m.-7 p.m. rules, which are FLSA, not Colorado). After school hours on a school day: at most 6 hours, unless the next day is not a school day (6 is kept as the stricter value). No work 9:30 p.m.-5:00 a.m. when the next day is a school day; Colorado sets NO time-of-day limit on a night before a non-school day (latestEndBeforeNonSchoolDay null = no state rule). Any minor: max 8 hours in any 24-hour period and 40 h/week (the Division may authorize more in an emergency). No work during school hours except with a school release permit under § 8-12-113 (up to 30 days, parent approval). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package. Also no more than 8 hours in any 24-hour period (maxHoursIn24h)."
       },
       {
         "minAge": 16,
@@ -664,6 +697,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": 8,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -685,7 +720,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "8 hours in any 24-hour period (not per calendar day) and 40 hours per week; CDLE: 'Colorado has a stricter age minimum (18) for weeks over 40 hours, or days over 8'. No time-of-day limits. Does not apply to 16–17-year-olds with a high-school diploma or GED (not 'minors' under the Act). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package."
+        "note": "8 hours in any 24-hour period (not per calendar day) and 40 hours per week; CDLE: 'Colorado has a stricter age minimum (18) for weeks over 40 hours, or days over 8'. No time-of-day limits. Does not apply to 16–17-year-olds with a high-school diploma or GED (not 'minors' under the Act). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package. Also no more than 8 hours in any 24-hour period (maxHoursIn24h)."
       }
     ]
   },
@@ -720,6 +755,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -753,7 +790,9 @@ const JURISDICTIONS = {
           "nonSchoolWeek": 48,
           "schoolDayIncludingSchool": null
         },
-        "maxDaysPerWeek": null,
+        "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -775,7 +814,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "INDUSTRY-SPECIFIC: values are the § 31-18 rules for barber shops and hairdressing/manicuring establishments: 10 p.m.-6 a.m. barred every night, 6 h on a school day (8 if it precedes a non-school day; 6 kept as stricter), 8 h other days, 32 h in a school week, 48 h otherwise. Other industries are looser: restaurants/amusement/theaters allow 16-17 until 11 p.m. before school days and midnight otherwise; MERCANTILE (§§ 31-13, 31-14) - enrolled students same 6/8 and 32/48, non-enrolled non-graduates 8 h/day, 6 days, 48 h; 6 a.m.-10 p.m., until 11 p.m. (supermarket over 3,500 sq ft: midnight) on nights not preceding a school day. The encoded values are therefore at least as strict as the retail rule. None of these limits apply to high-school graduates. No minor-specific meal break."
+        "note": "INDUSTRY-SPECIFIC: values are the § 31-18 rules for barber shops and hairdressing/manicuring establishments: 10 p.m.-6 a.m. barred every night, 6 h on a school day (8 if it precedes a non-school day; 6 kept as stricter), 8 h other days, 32 h in a school week, 48 h otherwise. Other industries are looser: restaurants/amusement/theaters allow 16-17 until 11 p.m. before school days and midnight otherwise; MERCANTILE (§§ 31-13, 31-14) - enrolled students same 6/8 and 32/48, non-enrolled non-graduates 8 h/day, 6 days, 48 h; 6 a.m.-10 p.m., until 11 p.m. (supermarket over 3,500 sq ft: midnight) on nights not preceding a school day.  None of these limits apply to high-school graduates. No minor-specific meal break. Mercantile minors not enrolled in or graduated from school may not work more than 6 days in a calendar week (§ 31-13(a)); 6 is encoded for all (stricter)."
       }
     ]
   },
@@ -810,6 +849,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -845,6 +886,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -897,6 +940,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": 12
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -913,6 +958,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -933,12 +979,14 @@ const JURISDICTIONS = {
         "maxAge": 17,
         "maxHours": {
           "schoolDay": null,
-          "nonSchoolDay": null,
+          "nonSchoolDay": 16,
           "schoolWeek": null,
           "nonSchoolWeek": null,
           "schoolDayIncludingSchool": 12
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -950,6 +998,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -963,7 +1012,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "No daily/weekly caps or clock-time window; instead: max 12 hours of school + work combined per day, at least 8 consecutive hours off (no work, no school) in every 24-hour day — which effectively caps work at 16 hours on a non-school day and forbids e.g. closing at midnight then opening at 7 a.m. — and a 30-minute non-working period after 5 continuous hours."
+        "note": "No daily/weekly caps or clock-time window; instead: max 12 hours of school + work combined per day, at least 8 consecutive hours off (no work, no school) in every 24-hour day — which effectively caps work at 16 hours on a non-school day and forbids e.g. closing at midnight then opening at 7 a.m. — and a 30-minute non-working period after 5 continuous hours. The 8 consecutive hours off in each 24-hour day are encoded as 16 hours of work on a day without school; the 8 free hours themselves are not checked."
       }
     ]
   },
@@ -991,6 +1040,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -1002,6 +1053,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 4,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -1028,6 +1080,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:30",
           "earliestStartNonSchoolDay": "06:30",
@@ -1039,6 +1093,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 4,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -1087,6 +1142,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -1117,6 +1174,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -1152,9 +1211,9 @@ const JURISDICTIONS = {
       "requiredUnder": 18,
       "issuer": "state labor department (DLIR): certificate of employment (14-15, form CL-1, per employer/job); certificate of age (16-17, online)",
       "citation": "Haw. Rev. Stat. § 390-2(b), (c)",
-      "sourceUrl": "https://labor.hawaii.gov/wsd/child-labor/",
-      "confidence": "medium",
-      "note": "14-15: employer must obtain a DLIR certificate of employment before the minor starts; new employer or occupation needs a new one. 16-17: employer records the number of a DLIR certificate of age (applied for online, no job offer needed). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+      "sourceUrl": "https://data.capitol.hawaii.gov/hrscurrent/Vol07_Ch0346-0398/HRS0390/HRS_0390-0002.htm",
+      "confidence": "high",
+      "note": "14-15: employer must obtain a DLIR certificate of employment before the minor starts; new employer or occupation needs a new one. 16-17: employer records the number of a DLIR certificate of age (applied for online, no job offer needed)."
     },
     "personalCareNote": null,
     "bands": [
@@ -1169,17 +1228,23 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": 6,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
-          "earliestStartNonSchoolDay": "06:00",
+          "earliestStartNonSchoolDay": "07:00",
           "latestEndBeforeSchoolDay": "19:00",
-          "latestEndBeforeNonSchoolDay": "21:00",
+          "latestEndBeforeNonSchoolDay": "19:00",
           "summer": null,
-          "vacation": null
+          "vacation": {
+            "earliestStart": "06:00",
+            "latestEnd": "21:00"
+          }
         },
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -1193,7 +1258,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "7 a.m.-7 p.m. on school days and on the day before a school day; 6 a.m.-9 p.m. on non-school days and the day before a non-school day / authorized school breaks (earliestStartNonSchoolDay 06:00). No more than 6 consecutive days; no more than 5 continuous hours without a 30-minute rest/meal period. The 10-hour combined school+work cap in HAR § 12-25-23 applies to theatrical employment only. Work only when not legally required to attend school or excused."
+        "note": "7 a.m.-7 p.m. on school days and on the day before a school day; 6 a.m.-9 p.m. on non-school days and the day before a non-school day / authorized school breaks (earliestStartNonSchoolDay 06:00). No more than 6 consecutive days; no more than 5 continuous hours without a 30-minute rest/meal period. The 10-hour combined school+work cap in HAR § 12-25-23 applies to theatrical employment only. Work only when not legally required to attend school or excused. The 6-day limit counts consecutive days, across workweeks (maxConsecutiveDays). Statute § 390-2(c)(4): 7 a.m.–7 p.m. on any day, 6 a.m.–9 p.m. only during an authorized school break (encoded as `vacation`); the Department's summary, which extends this to every night before a non-school day, is not followed."
       },
       {
         "minAge": 16,
@@ -1206,6 +1271,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -1233,13 +1300,13 @@ const JURISDICTIONS = {
   },
   "US-IA": {
     "asOf": "2025-12-09",
-    "effectiveFrom": null,
+    "effectiveFrom": "2023-07-01",
     "minimumAge": {
       "age": 14,
       "citation": "Iowa Code § 92.3",
       "sourceUrl": "https://www.legis.iowa.gov/docs/code/92.pdf",
       "confidence": "high",
-      "note": "\"No person under fourteen years of age shall be employed or permitted to work with or without compensation in any work activity.\" (Exceptions in § 92.17, e.g. agriculture, newspapers, performers — not read in detail.)"
+      "note": "\"No person under fourteen years of age shall be employed or permitted to work with or without compensation in any work activity.\" (Exceptions in § 92.17, e.g. a parent's business, models and performers, volunteers, referees and others.)"
     },
     "workPermit": null,
     "personalCareNote": "Iowa Code § 92.8(18) bars all under-18s from work involving exposure to dangerous or poisonous dyes or chemicals, which may reach hair-color and chemical services; front-desk and shampoo work are not specifically addressed. § 92.6's further 14-15 prohibitions were not read in full.",
@@ -1255,6 +1322,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -1271,6 +1340,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">=",
           "minutes": 30
         },
         "citations": [
@@ -1297,6 +1367,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -1342,6 +1414,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -1376,6 +1450,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -1428,6 +1504,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": 8
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": 8,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -1444,6 +1522,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -1461,7 +1540,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "Child Labor Law of 2024 (P.A. 103-721, eff. 2025-01-01). Exception (§ 30(a)): during the school year a minor may work 8 h on each Saturday and Sunday if they work no more than 6 consecutive days and no more than 24 h outside school hours that week — so the school-week cap can effectively reach 24 h (federal FLSA's 18 h still applies to covered employers). Max 8 h in any 24-hour period; on school days max 3 h work and max 8 h work+school combined. 7am-7pm Labor Day to June 1, 7am-9pm June 1 to Labor Day, any day. Must be supervised on site by an adult 21+ at all times (§ 35(c)). Meal period: no more than 5 continuous hours without 30 min. Park district / youth club recreational work has later hours (§ 30(d))."
+        "note": "Child Labor Law of 2024 (P.A. 103-721, eff. 2025-01-01). Exception (§ 30(a)): during the school year a minor may work 8 h on each Saturday and Sunday if they work no more than 6 consecutive days and no more than 24 h outside school hours that week — so the school-week cap can effectively reach 24 h (federal FLSA's 18 h still applies to covered employers). Max 8 h in any 24-hour period; on school days max 3 h work and max 8 h work+school combined. 7am-7pm Labor Day to June 1, 7am-9pm June 1 to Labor Day, any day. Must be supervised on site by an adult 21+ at all times (§ 35(c)). Meal period: no more than 5 continuous hours without 30 min. Park district / youth club recreational work has later hours (§ 30(d)). Also no more than 8 hours in any 24-hour period (maxHoursIn24h)."
       },
       {
         "minAge": 16,
@@ -1474,6 +1553,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -1519,6 +1600,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -1562,6 +1645,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -1618,6 +1703,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -1648,6 +1735,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -1693,6 +1782,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -1709,6 +1800,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -1726,7 +1818,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "Under-16s may work during school hours only under a school-arranged alternative schedule, a school-supervised work-experience/career-exploration program (29 CFR 570.35(a)), or after high-school graduation. KRS 339.270(2) also requires a paid 10-minute rest break per 4 hours worked, in addition to the 30-minute lunch after 5 continuous hours. 'Minor' in the regulation means a 14-17-year-old enrolled in school or not yet holding the credits to graduate."
+        "note": "Under-16s may work during school hours only under a school-arranged alternative schedule, a school-supervised work-experience/career-exploration program (29 CFR 570.35(a)), or after high-school graduation. KRS 339.270(2) also requires a paid 10-minute rest break per 4 hours worked, in addition to the 30-minute lunch after 5 continuous hours. 'Minor' in the regulation means a 14-17-year-old enrolled in school or not yet holding the credits to graduate. The paid 10-minute rest per 4 hours (KRS 339.270(2)) is not checked."
       },
       {
         "minAge": 16,
@@ -1739,6 +1831,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -1753,6 +1847,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -1766,7 +1861,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "All 16-17 limits apply only while school is in session; when school is not in session the state sets no hours or time-of-day limit (encoded as vacation with no end time; the 06:00 start and the 8 h non-school-day cap are still applied in vacation because the schema cannot lift them, which is stricter than the law). Parent written permission raises the school-day cap to 6.5 h, the school-week cap to 32.5 h, and the school-night end to 23:00; parent permission plus school certification of a 2.0+ GPA raises the school-week cap to 40 h (not encoded: stricter values kept). Permissions must be kept at the workplace. The regulation does not apply to a 16-17-year-old who has earned the credits to graduate and is not enrolled. Also a paid 10-minute rest break per 4 hours worked (KRS 339.270(2))."
+        "note": "All 16-17 limits apply only while school is in session; when school is not in session the state sets no hours or time-of-day limit (encoded as vacation with no end time; the 06:00 start and the 8 h non-school-day cap are still applied in vacation because the schema cannot lift them, which is stricter than the law). Parent written permission raises the school-day cap to 6.5 h, the school-week cap to 32.5 h, and the school-night end to 23:00; parent permission plus school certification of a 2.0+ GPA raises the school-week cap to 40 h (not encoded: stricter values kept). Permissions must be kept at the workplace. The regulation does not apply to a 16-17-year-old who has earned the credits to graduate and is not enrolled. Also a paid 10-minute rest break per 4 hours worked (KRS 339.270(2)). The paid 10-minute rest per 4 hours is not checked."
       }
     ]
   },
@@ -1801,6 +1896,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -1817,6 +1914,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">=",
           "minutes": 30
         },
         "citations": [
@@ -1855,6 +1953,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": null,
@@ -1885,6 +1985,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": null,
@@ -1937,6 +2039,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:30",
           "earliestStartNonSchoolDay": "06:30",
@@ -1980,6 +2084,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -2040,6 +2146,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": 12
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2056,6 +2164,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -2073,19 +2182,21 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "summer.from is MEMORIAL DAY (last Monday of May), not a fixed date: the 21:00 end runs Memorial Day through Labor Day; 20:00 from the day after Labor Day to the day before Memorial Day. The 23-hour cap is for a week when school is in session 5 days. Combined school + work hours may not exceed 12 in a calendar day, and the minor must have 8 consecutive hours free of school and work. Work-study/student-learner hours during school do not count toward the caps. The Commissioner may grant individual exceptions with parental consent."
+        "note": "summer.from is MEMORIAL DAY (last Monday of May), not a fixed date: the 21:00 end runs Memorial Day through Labor Day; 20:00 from the day after Labor Day to the day before Memorial Day. The 23-hour cap is for a week when school is in session 5 days. Combined school + work hours may not exceed 12 in a calendar day, and the minor must have 8 consecutive hours free of school and work. Work-study/student-learner hours during school do not count toward the caps. The Commissioner may grant individual exceptions with parental consent. The 8 consecutive free hours are not checked."
       },
       {
         "minAge": 16,
         "maxAge": 17,
         "maxHours": {
           "schoolDay": null,
-          "nonSchoolDay": null,
+          "nonSchoolDay": 12,
           "schoolWeek": null,
           "nonSchoolWeek": null,
           "schoolDayIncludingSchool": 12
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -2097,6 +2208,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -2106,7 +2218,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "No state day/week cap or time-of-day window for 16-17, but in any calendar day combined school + work hours may not exceed 12 AND the minor must have at least 8 consecutive hours not in school or at work (Commissioner may grant exceptions). 30-minute non-working period after 5 consecutive hours. Separate rule: no minor may transport cash/checks for a business 8pm-8am (§ 3-212)."
+        "note": "No state day/week cap or time-of-day window for 16-17, but in any calendar day combined school + work hours may not exceed 12 AND the minor must have at least 8 consecutive hours not in school or at work (Commissioner may grant exceptions). 30-minute non-working period after 5 consecutive hours. Separate rule: no minor may transport cash/checks for a business 8pm-8am (§ 3-212). The 12-hour combined limit is encoded for every day (nonSchoolDay 12). The 8 consecutive free hours are not checked."
       }
     ]
   },
@@ -2141,6 +2253,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": 6,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2161,7 +2275,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "During SUMMER VACATION the end time is 21:00 (no work 9 p.m.-7 a.m.); the statute ties this to 'summer vacation', not dates, so it is encoded as `vacation`, and 19:00 applies otherwise. Max 6 consecutive days. Section 774 does not apply to a minor with a high-school diploma/equivalency or who is emancipated. School-hours ban (under 17) has exceptions: excused from attendance, alternative-education work plan, approved vocational co-op, principal-granted early release. A meal or rest break rule that covers all employees, not minors only, is outside this package."
+        "note": "During SUMMER VACATION the end time is 21:00 (no work 9 p.m.-7 a.m.); the statute ties this to 'summer vacation', not dates, so it is encoded as `vacation`, and 19:00 applies otherwise. Max 6 consecutive days. Section 774 does not apply to a minor with a high-school diploma/equivalency or who is emancipated. School-hours ban (under 17) has exceptions: excused from attendance, alternative-education work plan, approved vocational co-op, principal-granted early release. A meal or rest break rule that covers all employees, not minors only, is outside this package. The 6-day limit counts consecutive days, across workweeks (maxConsecutiveDays). The 9 p.m. end is for summer vacation only; on another vacation day federal law's 7 p.m. binds outside June 1–Labor Day."
       },
       {
         "minAge": 16,
@@ -2174,6 +2288,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": 6,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "05:00",
@@ -2191,7 +2307,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "16-17 limits apply only to a minor ENROLLED IN SCHOOL; not to a high-school graduate/equivalency holder or emancipated minor. Up to 8 hours on the last scheduled day of the school week (schoolDay 6 kept as stricter). The 50-hour week also applies in a school week with fewer than 3 school days and in the first and last week of the school calendar (schoolWeek 24 kept as stricter). Start 07:00 on a school day, 05:00 on any other day; end 22:15 before a school day, midnight ('24:00') otherwise. A minor under 17 may not work during public-school hours (same exceptions as 14-15). A meal or rest break rule that covers all employees, not minors only, is outside this package."
+        "note": "16-17 limits apply only to a minor ENROLLED IN SCHOOL; not to a high-school graduate/equivalency holder or emancipated minor. Up to 8 hours on the last scheduled day of the school week (schoolDay 6 kept as stricter). The 50-hour week also applies in a school week with fewer than 3 school days and in the first and last week of the school calendar (schoolWeek 24 kept as stricter). Start 07:00 on a school day, 05:00 on any other day; end 22:15 before a school day, midnight ('24:00') otherwise. A minor under 17 may not work during public-school hours (same exceptions as 14-15). A meal or rest break rule that covers all employees, not minors only, is outside this package. The 6-day limit counts consecutive days, across workweeks (maxConsecutiveDays)."
       },
       {
         "minAge": 17,
@@ -2204,6 +2320,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": 6,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "05:00",
@@ -2221,7 +2339,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "Same as 16 except the school-hours ban (under 17 only) does not apply. Limits apply only to a 17-year-old enrolled in school. Up to 8 hours on the last school day of the week and 50 h in short (<3 day) school weeks and the first/last week of the school calendar (stricter 6 h / 24 h kept). Start 07:00 on a school day, 05:00 otherwise; end 22:15 before a school day, midnight ('24:00') otherwise. A meal or rest break rule that covers all employees, not minors only, is outside this package."
+        "note": "Same as 16 except the school-hours ban (under 17 only) does not apply. Limits apply only to a 17-year-old enrolled in school. Up to 8 hours on the last school day of the week and 50 h in short (<3 day) school weeks and the first/last week of the school calendar (stricter 6 h / 24 h kept). Start 07:00 on a school day, 05:00 otherwise; end 22:15 before a school day, midnight ('24:00') otherwise. A meal or rest break rule that covers all employees, not minors only, is outside this package. The 6-day limit counts consecutive days, across workweeks (maxConsecutiveDays)."
       }
     ]
   },
@@ -2256,6 +2374,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2272,6 +2392,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -2298,6 +2419,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -2312,6 +2435,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -2353,6 +2477,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2383,6 +2509,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": null,
@@ -2435,6 +2563,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2478,6 +2608,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -2517,6 +2649,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -2551,6 +2685,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -2587,7 +2723,7 @@ const JURISDICTIONS = {
       "note": "A minor under 14 may not be employed in or in connection with an occupation, except as provided in § 41-2-104 (parents, casual household work, performers, newspaper distribution, etc.). 14–15 are limited to the occupations listed in § 41-2-108 (retail/food-service office, cashiering, selling, cleanup, etc.)."
     },
     "workPermit": null,
-    "personalCareNote": null,
+    "personalCareNote": "14–15-year-olds may work only in the jobs § 41-2-108 lists for retail, food service and gasoline service establishments; hair and nail services are not among them.",
     "bands": [
       {
         "minAge": 14,
@@ -2600,6 +2736,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2643,6 +2781,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -2682,9 +2822,9 @@ const JURISDICTIONS = {
       "requiredUnder": 18,
       "issuer": "NC Department of Labor, online (employer initiates with the youth's YEID; youth, parent and employer e-sign)",
       "citation": "N.C. Gen. Stat. § 95-25.5(a)",
-      "sourceUrl": "https://www.labor.nc.gov/workplace-rights/youth-employment-rules/apply-youth-employment-certificate",
-      "confidence": "medium",
-      "note": "A Youth Employment Certificate is required for everyone under 18, and it still applies to employers covered by the FLSA (§ 95-25.5(k)). The youth, parent/guardian and employer must all sign before the first day of work. NCDOL will not issue a certificate for employment that would violate the FLSA child-labor rules. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+      "sourceUrl": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_95/GS_95-25.5.html",
+      "confidence": "high",
+      "note": "A Youth Employment Certificate is required for everyone under 18, and it still applies to employers covered by the FLSA (§ 95-25.5(k)). The youth, parent/guardian and employer must all sign before the first day of work. NCDOL will not issue a certificate for employment that would violate the FLSA child-labor rules."
     },
     "personalCareNote": null,
     "bands": [
@@ -2699,6 +2839,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2713,6 +2855,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -2722,7 +2865,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "IMPORTANT: under § 95-25.5(k), employers subject to the federal FLSA are exempt from everything in § 95-25.5 except the certificate (a), the school-night rule (a1), hazardous occupations (b), and the alcohol rules (j). So the hours caps, the 7 a.m.-7 p.m. window and the 30-minute break after 5 hours bind only employers NOT covered by the FLSA; covered employers follow the federal rules. The band is kept for all employers (stricter is safe). The 9 p.m. end applies 'during the summer (when school is not in session)' with no dates, so it is encoded as `vacation`. Enrollees in high school apprenticeship or FLSA WECEP programs may work 23 hours/week in term, including during school hours. Separately, § 95-25.5(a1) applies to every employer: a youth enrolled in grade 12 or lower may not work between 11 p.m. and 5 a.m. when there is school the next day."
+        "note": "IMPORTANT: under § 95-25.5(k), employers subject to the federal FLSA are exempt from everything in § 95-25.5 except the certificate (a), the school-night rule (a1), hazardous occupations (b), and the alcohol rules (j). So the hours caps, the 7 a.m.-7 p.m. window and the 30-minute break after 5 hours bind only employers NOT covered by the FLSA; covered employers follow the federal rules. The band is kept for all employers (stricter is safe). The 9 p.m. end applies 'during the summer (when school is not in session)' with no dates, so it is encoded as `vacation`. Enrollees in high school apprenticeship or FLSA WECEP programs may work 23 hours/week in term, including during school hours. Separately, § 95-25.5(a1) applies to every employer: a youth enrolled in grade 12 or lower may not work between 11 p.m. and 5 a.m. when there is school the next day. The 9 p.m. end is for summer only; on another vacation day federal law's 7 p.m. binds outside June 1–Labor Day."
       },
       {
         "minAge": 16,
@@ -2735,6 +2878,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": null,
@@ -2787,6 +2932,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2826,6 +2973,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -2854,7 +3003,7 @@ const JURISDICTIONS = {
       "age": 14,
       "citation": "Neb. Rev. Stat. §§ 48-302, 48-304",
       "sourceUrl": "https://nebraskalegislature.gov/laws/statutes.php?statute=48-304",
-      "confidence": "medium",
+      "confidence": "high",
       "note": "Nebraska has no stand-alone 'minimum age' sentence. The minimum of 14 is inferred from two provisions read together: § 48-302 bars employing anyone under 16 without an employment certificate on file, and § 48-304 lets an under-14 child get a certificate only for work in an employment program that the child's school or school district supervises and sponsors. For ordinary retail/service work that makes 14 the effective floor."
     },
     "workPermit": {
@@ -2878,6 +3027,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -2912,6 +3063,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -2964,6 +3117,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -2994,6 +3149,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": 6,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -3011,7 +3168,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "These limits apply only to 16-17-year-olds 'duly enrolled in school'. The 35-hour cap applies only in a work week in which school is in session all 5 days, so a partial school week has no state cap (35 kept as stricter). During school vacations (summer = June 1 through Labor Day) the limit is 48 hours a week and no more than 6 consecutive days; maxDaysPerWeek 6 is applied all year (stricter: no day limit in school weeks). Youths who live and work at a summer camp for minors are exempt from the vacation limit. Parental written permission is required unless the youth has graduated or has a GED. There is no time-of-day limit."
+        "note": "These limits apply only to 16-17-year-olds 'duly enrolled in school'. The 35-hour cap applies only in a work week in which school is in session all 5 days, so a partial school week has no state cap (35 kept as stricter). During school vacations (summer = June 1 through Labor Day) the limit is 48 hours a week and no more than 6 consecutive days; maxDaysPerWeek 6 is applied all year (stricter: no day limit in school weeks). Youths who live and work at a summer camp for minors are exempt from the vacation limit. Parental written permission is required unless the youth has graduated or has a GED. There is no time-of-day limit. The 6-day limit counts consecutive days, across workweeks (maxConsecutiveDays)."
       }
     ]
   },
@@ -3046,6 +3203,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -3057,6 +3216,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -3083,6 +3243,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -3094,6 +3256,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -3142,6 +3305,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -3166,7 +3331,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "The 7 p.m. end applies 'during the school year'; outside the school year the end is 9 p.m. The statute gives no calendar dates, so the later end is encoded as `vacation`, not a dated summer. Work during school hours is barred except in work-experience and career-exploration programs. The statute's subsection B lead-in reads 'over the age of fourteen or under the age of sixteen', an evident drafting slip for 'and' that a failed 2015 bill (SB 606) tried to fix."
+        "note": "The 7 p.m. end applies 'during the school year'; outside the school year the end is 9 p.m. The statute gives no calendar dates, so the later end is encoded as `vacation`, not a dated summer. Work during school hours is barred except in work-experience and career-exploration programs. The statute's subsection B lead-in reads 'over the age of fourteen or under the age of sixteen', an evident drafting slip for 'and' that a failed 2015 bill (SB 606) tried to fix. The 9 p.m. end is for outside the calendar school year only; on another vacation day federal law's 7 p.m. binds outside June 1–Labor Day."
       },
       {
         "minAge": 16,
@@ -3179,6 +3344,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -3202,7 +3369,7 @@ const JURISDICTIONS = {
   },
   "US-NV": {
     "asOf": "2026-09-09",
-    "effectiveFrom": null,
+    "effectiveFrom": "2025-10-01",
     "minimumAge": null,
     "workPermit": {
       "requiredUnder": 14,
@@ -3225,6 +3392,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -3259,6 +3428,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": null,
@@ -3311,6 +3482,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -3350,6 +3523,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -3406,6 +3581,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -3422,6 +3599,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -3444,6 +3622,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": null,
@@ -3455,6 +3635,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -3481,9 +3662,9 @@ const JURISDICTIONS = {
     "workPermit": {
       "requiredUnder": 16,
       "issuer": "school principal/headmaster/administrative officer (parent for homeschooled children)",
-      "citation": "Okla. Stat. tit. 40, § 71 et seq.; tit. 70, § 10; ODOL Child Labor Unit FAQ",
-      "sourceUrl": "https://oklahoma.gov/labor/workplace-rights/child-labor/faqs---child-labor-unit.html",
-      "confidence": "medium",
+      "citation": "Okla. Stat. tit. 40, § 77",
+      "sourceUrl": "https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=77436",
+      "confidence": "high",
       "note": "Employment Certificate of Age and Schooling; employer must keep it on file. The FAQ does not state the age range outright; ODOL/CareerTech materials describe it as required for 14- and 15-year-olds. No permit for 16-17."
     },
     "personalCareNote": null,
@@ -3499,11 +3680,13 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
           "latestEndBeforeSchoolDay": "19:00",
-          "latestEndBeforeNonSchoolDay": "21:00",
+          "latestEndBeforeNonSchoolDay": "19:00",
           "summer": {
             "from": "06-01",
             "to": "labor-day",
@@ -3515,16 +3698,25 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
+          {
+            "citation": "Okla. Stat. tit. 40, § 75",
+            "sourceUrl": "https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=77434"
+          },
+          {
+            "citation": "Okla. Stat. tit. 40, § 76",
+            "sourceUrl": "https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=77435"
+          },
           {
             "citation": "Okla. Stat. tit. 40, §§ 75, 77; ODOL Child Labor Unit FAQ",
             "sourceUrl": "https://oklahoma.gov/labor/workplace-rights/child-labor/faqs---child-labor-unit.html"
           }
         ],
-        "confidence": "medium",
-        "note": "ODOL says the 9 p.m. end on days followed by a non-school day applies year-round only where the employer is NOT covered by the federal FLSA (federal 7 p.m. is stricter otherwise). Also a 1-hour cumulative rest per 8 consecutive hours. No overtime for under-16. ODOL FAQ does not address work during school hours; statute text not opened. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "confidence": "high",
+        "note": "ODOL says the 9 p.m. end on days followed by a non-school day applies year-round only where the employer is NOT covered by the federal FLSA (federal 7 p.m. is stricter otherwise). Also a 1-hour cumulative rest per 8 consecutive hours. No overtime for under-16. ODOL FAQ does not address work during school hours;  § 76: 7 a.m.–7 p.m., to 9 p.m. from June 1 through Labor Day and, for an employer not covered by the FLSA, before a non-school day (19:00 encoded on non-school nights, stricter). § 75(B): school is \"in session\" from the first Tuesday after Labor Day through May 31."
       },
       {
         "minAge": 16,
@@ -3537,6 +3729,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -3589,6 +3783,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -3605,6 +3801,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">=",
           "minutes": 30
         },
         "citations": [
@@ -3631,6 +3828,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -3642,6 +3841,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">=",
           "minutes": 30
         },
         "citations": [
@@ -3690,6 +3890,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": 6,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -3704,6 +3906,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -3713,7 +3916,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "During a 'school vacation period' (not fixed dates) the end extends to 9 p.m. - encoded as `vacation`. L&I may by regulation allow non-FLSA employers until 10 p.m. A minor in summer school stays at the 18-hour school-week cap. Rest break: no more than 5 hours continuously without a 30-minute break (all minors). Max 6 consecutive days (all minors). School-work program students: work + school hours may not exceed 8/day."
+        "note": "During a 'school vacation period' (not fixed dates) the end extends to 9 p.m. - encoded as `vacation`. L&I may by regulation allow non-FLSA employers until 10 p.m. A minor in summer school stays at the 18-hour school-week cap. Rest break: no more than 5 hours continuously without a 30-minute break (all minors). Max 6 consecutive days (all minors). School-work program students: work + school hours may not exceed 8/day. The 6-day limit counts consecutive days, across workweeks (maxConsecutiveDays)."
       },
       {
         "minAge": 16,
@@ -3726,6 +3929,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": 6,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -3740,6 +3945,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -3753,7 +3959,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "While school is in session: 6 a.m.-midnight ('24:00'), 8 h/day ('in a single day', so every day of a school week, weekends included), 28 h per regular school week - L&I reads this as 28 Mon-Fri plus up to 8 hours each on Sat/Sun (28 kept as stricter). During a school vacation period: until 1 a.m. ('25:00', encoded as `vacation`), 10 h/day, 48 h/week with hours over 44 voluntary. Because the schema's nonSchoolDay cap cannot tell a school-week weekend from a vacation day, it is encoded as 8 (stricter; vacation days really allow 10). Summer-school enrollees stay on school-session limits. These limits do NOT apply to high-school graduates or those exempt from compulsory attendance. The Act defines hours of employment as hours outside the school hours set by the school district, so work during school hours is barred (encoded)."
+        "note": "While school is in session: 6 a.m.-midnight ('24:00'), 8 h/day ('in a single day', so every day of a school week, weekends included), 28 h per regular school week - L&I reads this as 28 Mon-Fri plus up to 8 hours each on Sat/Sun (28 kept as stricter). During a school vacation period: until 1 a.m. ('25:00', encoded as `vacation`), 10 h/day, 48 h/week with hours over 44 voluntary. Because the schema's nonSchoolDay cap cannot tell a school-week weekend from a vacation day, it is encoded as 8 (stricter; vacation days really allow 10). Summer-school enrollees stay on school-session limits. These limits do NOT apply to high-school graduates or those exempt from compulsory attendance. The Act defines hours of employment as hours outside the school hours set by the school district, so work during school hours is barred (encoded). The 6-day limit counts consecutive days, across workweeks (maxConsecutiveDays)."
       }
     ]
   },
@@ -3788,6 +3994,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -3825,10 +4033,12 @@ const JURISDICTIONS = {
           "schoolDay": 9,
           "nonSchoolDay": 9,
           "schoolWeek": 48,
-          "nonSchoolWeek": null,
+          "nonSchoolWeek": 48,
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
@@ -3846,7 +4056,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "48 h/week and 9 h/day (9 3/5 h/day when 48 hours are worked in 5 days); 8-hour rest between workdays. The 6 a.m./11:30 p.m. (1:30 a.m., '25:30', before a non-school day) limits apply only to minors regularly attending school. During school VACATIONS there is no limit on daily or weekly hours (§ 28-3-11(c)); the nonSchoolDay 9 is the in-session rule for a weekend day and is stricter than the law in vacations. A meal or rest break rule that covers all employees, not minors only, is outside this package."
+        "note": "48 h/week and 9 h/day (9 3/5 h/day when 48 hours are worked in 5 days); 8-hour rest between workdays. The 6 a.m./11:30 p.m. (1:30 a.m., '25:30', before a non-school day) limits apply only to minors regularly attending school. During school VACATIONS there is no limit on daily or weekly hours (§ 28-3-11(c)); the nonSchoolDay 9 is the in-session rule for a weekend day and is stricter than the law in vacations. A meal or rest break rule that covers all employees, not minors only, is outside this package. 48 hours a week applies in every week except school vacations (§ 28-3-11(c)); 48 is encoded for every week (stricter). The 6 a.m. start applies by statute only before a school day; it is encoded for every day (stricter)."
       }
     ]
   },
@@ -3855,10 +4065,10 @@ const JURISDICTIONS = {
     "effectiveFrom": null,
     "minimumAge": {
       "age": 14,
-      "citation": "S.C. Code § 41-13-20 and LLR child labor regulations (summary)",
-      "sourceUrl": "https://llr.sc.gov/wage/cll.aspx",
-      "confidence": "medium",
-      "note": "LLR: employment under 14 is generally 'oppressive child labor'. Exemptions: performers, 12-13 in some farm work, any age in a business 100% owned and operated by a parent, newspaper delivery. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+      "citation": "S.C. Code Regs. 71-3103, 71-3106",
+      "sourceUrl": "https://www.scstatehouse.gov/coderegs/Chapter%2071.pdf",
+      "confidence": "high",
+      "note": "LLR: employment under 14 is generally 'oppressive child labor'. Exemptions: performers, 12-13 in some farm work, any age in a business 100% owned and operated by a parent, newspaper delivery."
     },
     "workPermit": null,
     "personalCareNote": null,
@@ -3874,6 +4084,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -3885,16 +4097,20 @@ const JURISDICTIONS = {
             "latestEnd": "21:00"
           }
         },
-        "noWorkDuringSchoolHours": false,
+        "noWorkDuringSchoolHours": true,
         "mealBreak": null,
         "citations": [
+          {
+            "citation": "S.C. Code Regs. 71-3103, 71-3106",
+            "sourceUrl": "https://www.scstatehouse.gov/coderegs/Chapter%2071.pdf"
+          },
           {
             "citation": "S.C. Code § 41-13-20; SC LLR Child Labor Regulations Summary",
             "sourceUrl": "https://llr.sc.gov/wage/cll.aspx"
           }
         ],
-        "confidence": "medium",
-        "note": "LLR frames limits by 'school sessions' vs 'non-school sessions (such as summer vacations)': during non-school sessions 8 h/day, 40 h/week, 7 a.m.-9 p.m. No fixed summer dates are given, so the 9 p.m. end is encoded as `vacation`. The 3 h/day cap is per day during a school session (LLR does not distinguish a Saturday within a school week). No state break rule found on the LLR page (a secondary claim of a 30-minute break was not confirmed). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "confidence": "high",
+        "note": "LLR frames limits by 'school sessions' vs 'non-school sessions (such as summer vacations)': during non-school sessions 8 h/day, 40 h/week, 7 a.m.-9 p.m. No fixed summer dates are given, so the 9 p.m. end is encoded as `vacation`. The 3 h/day cap is per day during a school session (LLR does not distinguish a Saturday within a school week). No state break rule found on the LLR page (a secondary claim of a 30-minute break was not confirmed). Outside school hours only (Reg. 71-3106(b)(1)). The 9 p.m. end is for the school district's summer break only (federal 7 p.m. binds outside June 1–Labor Day)."
       },
       {
         "minAge": 16,
@@ -3907,6 +4123,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -3919,12 +4137,16 @@ const JURISDICTIONS = {
         "mealBreak": null,
         "citations": [
           {
+            "citation": "S.C. Code Regs. 71-3103, 71-3106",
+            "sourceUrl": "https://www.scstatehouse.gov/coderegs/Chapter%2071.pdf"
+          },
+          {
             "citation": "SC LLR Child Labor Regulations Summary",
             "sourceUrl": "https://llr.sc.gov/wage/cll.aspx"
           }
         ],
-        "confidence": "medium",
-        "note": "Exempt from hour and scheduling restrictions; FLSA hazardous orders still apply. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "confidence": "high",
+        "note": "Exempt from hour and scheduling restrictions; FLSA hazardous orders still apply."
       }
     ]
   },
@@ -3946,6 +4168,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -3980,6 +4204,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4014,6 +4240,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4059,6 +4287,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4073,6 +4303,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">=",
           "minutes": 30
         },
         "citations": [
@@ -4082,7 +4313,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "TDLWD frames limits by 'while school is in session' (3 h/day, 18 h/week, 7 a.m.-7 p.m.) vs 'while school is not in session' (8 h/day, 40 h/week, 6 a.m.-9 p.m.). Because the state ties the 6 a.m.-9 p.m. window to periods when school is not in session (no dates), it is encoded as `vacation`. 'Required to attend class' hours are off-limits. Break: 30-minute unpaid break/meal period if scheduled 6 consecutive hours, not scheduled during or before the first hour; the adult break waiver does not apply to under-18s. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "note": "TDLWD frames limits by 'while school is in session' (3 h/day, 18 h/week, 7 a.m.-7 p.m.) vs 'while school is not in session' (8 h/day, 40 h/week, 6 a.m.-9 p.m.). Because the state ties the 6 a.m.-9 p.m. window to periods when school is not in session (no dates), it is encoded as `vacation`. 'Required to attend class' hours are off-limits. Break: 30-minute unpaid break/meal period if scheduled 6 consecutive hours, not scheduled during or before the first hour; the adult break waiver does not apply to under-18s. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. TDLWD: 7 p.m.–7 a.m. if the next day is a school day, 9 p.m.–6 a.m. if it is not; encoded as 19:00 / 07:00 with 21:00 / 06:00 only on vacation days (stricter)."
       },
       {
         "minAge": 16,
@@ -4095,6 +4326,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": null,
@@ -4106,6 +4339,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">=",
           "minutes": 30
         },
         "citations": [
@@ -4143,6 +4377,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": "05:00",
@@ -4173,6 +4409,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4212,6 +4450,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4228,6 +4468,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4240,8 +4481,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.law.cornell.edu/regulations/utah/Utah-Admin-Code-R610-2-3"
           }
         ],
-        "confidence": "high",
-        "note": "Hours apply to all minors under 16 'except as provided in the exemptions described in 29 U.S.C. Sec. 213 and the exceptions described in 29 C.F.R. Sec. 570.35'. The statute says 'eight hours in one calendar day' and '40 hours in one calendar week' without restricting them to non-school days/weeks (the 3 h / 18 h school-day/school-week caps are the stricter ones when school is in session). No work during school hours 'except as authorized by the proper school authorities'. Summer: June 1 through Labor Day, may work until 9:00 p.m. Meal/rest (R610-2-3, all minors): 30-minute meal period no later than 5 hours after the start of the workday (paid if not fully relieved); plus a paid 10-minute rest per 4 hours or fraction, and no more than 3 consecutive hours without a 10-minute rest. The Division may authorize work outside these times/occupations in writing (34-23-207(5); Application for Authorization to Employ a Minor). The Labor Commission's own web page still described the pre-2024 rule (4 h school day, until 9:30 p.m.) when checked via search — the statute (amended by Laws 2024 ch. 221, SB 248) controls."
+        "confidence": "medium",
+        "note": "Hours apply to all minors under 16 'except as provided in the exemptions described in 29 U.S.C. Sec. 213 and the exceptions described in 29 C.F.R. Sec. 570.35'. The statute says 'eight hours in one calendar day' and '40 hours in one calendar week' without restricting them to non-school days/weeks (the 3 h / 18 h school-day/school-week caps are the stricter ones when school is in session). No work during school hours 'except as authorized by the proper school authorities'. Summer: June 1 through Labor Day, may work until 9:00 p.m. Meal/rest (R610-2-3, all minors): 30-minute meal period no later than 5 hours after the start of the workday (paid if not fully relieved); plus a paid 10-minute rest per 4 hours or fraction, and no more than 3 consecutive hours without a 10-minute rest. The Division may authorize work outside these times/occupations in writing (34-23-207(5); Application for Authorization to Employ a Minor). The Labor Commission's own web page still described the pre-2024 rule (4 h school day, until 9:30 p.m.) when checked via search — the statute (amended by Laws 2024 ch. 221, SB 248) controls. Confidence medium: the meal and rest rule (R610-2-3) is read in an unofficial copy."
       },
       {
         "minAge": 16,
@@ -4254,6 +4495,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4265,6 +4508,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4281,8 +4525,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.law.cornell.edu/regulations/utah/Utah-Admin-Code-R610-2-3"
           }
         ],
-        "confidence": "high",
-        "note": "No state hours or time-of-day limits for 16–17 (34-23-202 covers only under 16; 34-23-203 lets 16+ work in all non-hazardous occupations). Meal/rest rule R610-2-3 applies to every 'minor employee' (Utah: under 18): 30-minute meal no later than 5 hours into the workday, paid 10-minute rest per 4 hours, no more than 3 consecutive hours without a rest. The whole chapter does not apply to a 16- or 17-year-old who has a high school diploma, a school release certificate, is legally married, or is head of a household (34-23-208)."
+        "confidence": "medium",
+        "note": "No state hours or time-of-day limits for 16–17 (34-23-202 covers only under 16; 34-23-203 lets 16+ work in all non-hazardous occupations). Meal/rest rule R610-2-3 applies to every 'minor employee' (Utah: under 18): 30-minute meal no later than 5 hours into the workday, paid 10-minute rest per 4 hours, no more than 3 consecutive hours without a rest. The whole chapter does not apply to a 16- or 17-year-old who has a high school diploma, a school release certificate, is legally married, or is head of a household (34-23-208). Confidence medium: the meal and rest rule (R610-2-3) is read in an unofficial copy."
       }
     ]
   },
@@ -4317,6 +4561,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4333,6 +4579,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4363,6 +4610,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4374,6 +4623,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4386,7 +4636,7 @@ const JURISDICTIONS = {
             "sourceUrl": "https://law.lis.virginia.gov/admincode/title16/agency15/chapter40/section20/"
           }
         ],
-        "confidence": "medium",
+        "confidence": "high",
         "note": "No Virginia hours or time-of-day limits for 16-17 (the hours regulation covers only minors under 16). mealBreak is UNCERTAIN and encoded stricter: § 40.1-80.1(B) reads 'No child shall be employed or permitted to work for more than five hours continuously without an interval of at least 30 minutes for a lunch period' - unlike subsection A it is not limited to 'under 16'; however 16VAC15-40-30(B) and DOLI's youth page apply the 30-minute rule only to under-16s."
       }
     ]
@@ -4422,6 +4672,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4461,6 +4713,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4513,6 +4767,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4524,6 +4780,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 4,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4550,6 +4807,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4564,6 +4823,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4586,8 +4846,8 @@ const JURISDICTIONS = {
     "effectiveFrom": "2026-06-01",
     "minimumAge": {
       "age": 14,
-      "citation": "Wis. Stat. § 103.71(2); Wis. Admin. Code DWD 270.10",
-      "sourceUrl": "https://docs.legis.wisconsin.gov/document/administrativecode/DWD%20270.10",
+      "citation": "Wis. Stat. §§ 103.67(2), 103.71(2); Wis. Admin. Code DWD 270.10",
+      "sourceUrl": "https://docs.legis.wisconsin.gov/statutes/statutes/103/67",
       "confidence": "high",
       "note": "Under 14 may not work in any gainful occupation except listed exceptions to the extent FLSA allows: 12+ in their own school's lunch program, street trades, farming, domestic work in a home; 11–13 football ball monitors; 12–13 sideline/athletic officials; public exhibitions; any age in a parent's/guardian's business under their direct supervision."
     },
@@ -4612,6 +4872,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": 6,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4628,6 +4890,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4654,6 +4917,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4665,6 +4930,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4709,6 +4975,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "07:00",
           "earliestStartNonSchoolDay": "07:00",
@@ -4725,6 +4993,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
+          "op": ">",
           "minutes": 30
         },
         "citations": [
@@ -4747,6 +5016,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
@@ -4792,6 +5063,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": "05:00",
           "earliestStartNonSchoolDay": "05:00",
@@ -4830,6 +5103,8 @@ const JURISDICTIONS = {
           "schoolDayIncludingSchool": null
         },
         "maxDaysPerWeek": null,
+        "maxConsecutiveDays": null,
+        "maxHoursIn24h": null,
         "window": {
           "earliestStartSchoolDay": null,
           "earliestStartNonSchoolDay": null,
