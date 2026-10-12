@@ -1,0 +1,55 @@
+{
+  "name": "youth-employment-rules",
+  "version": "1.0.0",
+  "description": "May a 15-year-old work this shift here? US child labor hours rules — federal FLSA and all 50 states and DC — as cited, dated data, with a schedule checker: hours per school day and week, start and end times, summer and vacation windows, school hours, meal breaks, days per week, minimum ages and work permits. Federal and state apply together and the stricter wins. Unknown places answer unknown, never 'no limits'. Pure functions, zero dependencies.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "data.js",
+    "dates.js",
+    "freeze.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "child-labor",
+    "child-labour",
+    "youth-employment",
+    "minor",
+    "work-hours",
+    "flsa",
+    "scheduling",
+    "work-permit",
+    "labor-law",
+    "compliance",
+    "hr",
+    "shift-scheduling"
+  ],
+  "author": "Drew Thomas <drew@drewthomasbuilds.com> (https://drewthomasbuilds.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewthomas00/youth-employment-rules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/drewthomas00/youth-employment-rules/issues"
+  },
+  "homepage": "https://github.com/drewthomas00/youth-employment-rules#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}
