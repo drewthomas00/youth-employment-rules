@@ -147,7 +147,10 @@ test('Washington 16-17: the 5 a.m. start is for non-school weeks, not a vacation
   assert.deepEqual(rules(r), ['starts_too_early']);
 });
 
-test('New York: the general meal period covers minors, 30 minutes for a shift over six hours', () => {
-  assert.deepEqual(rules(run('US-NY', SIXTEEN, [{ date: SAT, start: '09:00', end: '16:00' }], { hasWorkPermit: true })), ['meal_break']);
-  assert.deepEqual(rules(run('US-NY', SIXTEEN, [{ date: SAT, start: '09:00', end: '16:30', breakMinutes: 30 }], { hasWorkPermit: true })), []);
+test('meal breaks are the rules written for minors; a rule for all employees is out of scope', () => {
+  // California's § 512 meal period covers everyone and is not a minors rule.
+  assert.deepEqual(rules(run('US-CA', SIXTEEN, [{ date: SAT, start: '09:00', end: '15:00' }], { hasWorkPermit: true })), []);
+  assert.deepEqual(rulesFor('US-CA', { age: 16, on: SAT }).mealBreaks, []);
+  // Ohio's is written for minors: 30 minutes after 5 hours.
+  assert.deepEqual(rules(run('US-OH', SIXTEEN, [{ date: SAT, start: '09:00', end: '15:00' }], { hasWorkPermit: true })), ['meal_break']);
 });

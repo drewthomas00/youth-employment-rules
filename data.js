@@ -136,8 +136,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -182,8 +181,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -241,8 +239,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -524,11 +521,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "Cal. Educ. Code § 49111; Cal. Lab. Code § 1391(a)(1)",
@@ -536,7 +529,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "May be employed only on non-school days (maxHours.schoolDay 0 = never on a school day, before, during or after school). School-year maximums are not stated in statute but may not exceed 8/40 or the permit (schoolWeek encoded 40). Not eligible for Work Experience Education. Meal break is the general Lab. Code § 512 / IWC Wage Order rule (more than 5 hours), not minor-specific. Federal FLSA bars 12-13 from most non-agricultural employment. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "note": "May be employed only on non-school days (maxHours.schoolDay 0 = never on a school day, before, during or after school). School-year maximums are not stated in statute but may not exceed 8/40 or the permit (schoolWeek encoded 40). Not eligible for Work Experience Education. Federal FLSA bars 12-13 from most non-agricultural employment. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 14,
@@ -563,11 +556,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "Cal. Lab. Code § 1391(a)(1)-(2)",
@@ -579,7 +568,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "'Schoolday' = any day the minor is required to attend school for 240 minutes or more (Lab. Code § 1391(b)). 'While school is in session' follows the county public-school calendar (DLSE). Must have completed 7th grade to work while school is in session. Work Experience Education enrollees may work up to 23 h/week, partly during school hours. High-school graduates may work adult hours. Meal break is the general Lab. Code § 512 rule (30 min for work periods over 5 hours; waivable by mutual consent if the day is no more than 6 hours), not minor-specific. California also requires one day's rest in seven for all employees (Lab. Code §§ 551-552), so effectively max 6 days/week (accumulable within a month). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "note": "'Schoolday' = any day the minor is required to attend school for 240 minutes or more (Lab. Code § 1391(b)). 'While school is in session' follows the county public-school calendar (DLSE). Must have completed 7th grade to work while school is in session. Work Experience Education enrollees may work up to 23 h/week, partly during school hours. High-school graduates may work adult hours. California also requires one day's rest in seven for all employees (Lab. Code §§ 551-552), so effectively max 6 days/week (accumulable within a month). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 16,
@@ -601,11 +590,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": false,
-        "mealBreak": {
-          "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "Cal. Lab. Code § 1391(a)(3)-(4)",
@@ -617,7 +602,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "4 hours on any schoolday, but 8 hours on a non-schoolday OR on any day preceding a non-schoolday (so a Friday may be 8; schoolDay 4 is stricter for Fridays). 48 h/week whether or not school is in session. Work may run until 12:30 a.m. ('24:30') on an evening preceding a non-schoolday. WEE students and personal attendants may exceed 4 h on a schoolday (never more than 8), and WEE students, with permission, may work until 12:30 a.m. on any day (§ 1391.1). Work during school hours is governed by compulsory-attendance law, not a child-labor hours rule. Meal break is the general § 512 rule. One day's rest in seven applies to all employees. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "note": "4 hours on any schoolday, but 8 hours on a non-schoolday OR on any day preceding a non-schoolday (so a Friday may be 8; schoolDay 4 is stricter for Fridays). 48 h/week whether or not school is in session. Work may run until 12:30 a.m. ('24:30') on an evening preceding a non-schoolday. WEE students and personal attendants may exceed 4 h on a schoolday (never more than 8), and WEE students, with permission, may work until 12:30 a.m. on any day (§ 1391.1). Work during school hours is governed by compulsory-attendance law, not a child-labor hours rule. One day's rest in seven applies to all employees. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       }
     ]
   },
@@ -654,11 +639,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "Colo. Rev. Stat. § 8-12-105(2)-(4)",
@@ -670,7 +651,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "STATE-only limits (CDLE INFO #22 also prints the federal 3 h/18 h/7 a.m.-7 p.m. rules, which are FLSA, not Colorado). After school hours on a school day: at most 6 hours, unless the next day is not a school day (6 is kept as the stricter value). No work 9:30 p.m.-5:00 a.m. when the next day is a school day; Colorado sets NO time-of-day limit on a night before a non-school day (latestEndBeforeNonSchoolDay null = no state rule). Any minor: max 8 hours in any 24-hour period and 40 h/week (the Division may authorize more in an emergency). No work during school hours except with a school release permit under § 8-12-113 (up to 30 days, parent approval). Meal break is Colorado's general COMPS Order rule (30 minutes when a shift exceeds 5 hours, plus 10-minute rest per 4 hours), not minor-specific. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "note": "STATE-only limits (CDLE INFO #22 also prints the federal 3 h/18 h/7 a.m.-7 p.m. rules, which are FLSA, not Colorado). After school hours on a school day: at most 6 hours, unless the next day is not a school day (6 is kept as the stricter value). No work 9:30 p.m.-5:00 a.m. when the next day is a school day; Colorado sets NO time-of-day limit on a night before a non-school day (latestEndBeforeNonSchoolDay null = no state rule). Any minor: max 8 hours in any 24-hour period and 40 h/week (the Division may authorize more in an emergency). No work during school hours except with a school release permit under § 8-12-113 (up to 30 days, parent approval). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 16,
@@ -692,11 +673,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": false,
-        "mealBreak": {
-          "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "Colo. Rev. Stat. § 8-12-105(4)",
@@ -708,7 +685,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "medium",
-        "note": "8 hours in any 24-hour period (not per calendar day) and 40 hours per week; CDLE: 'Colorado has a stricter age minimum (18) for weeks over 40 hours, or days over 8'. No time-of-day limits. Does not apply to 16–17-year-olds with a high-school diploma or GED (not 'minors' under the Act). Meal break is the general COMPS rule. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
+        "note": "8 hours in any 24-hour period (not per calendar day) and 40 hours per week; CDLE: 'Colorado has a stricter age minimum (18) for weeks over 40 hours, or days over 8'. No time-of-day limits. Does not apply to 16–17-year-olds with a high-school diploma or GED (not 'minors' under the Act). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       }
     ]
   },
@@ -936,8 +913,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -974,8 +950,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1027,8 +1002,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 4,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1065,8 +1039,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 4,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1207,8 +1180,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1299,8 +1271,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1473,8 +1444,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1739,8 +1709,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1784,8 +1753,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1849,8 +1817,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -1984,11 +1951,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "M.G.L. c. 149, § 65",
@@ -2001,14 +1964,10 @@ const JURISDICTIONS = {
           {
             "citation": "M.G.L. c. 149, § 66",
             "sourceUrl": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter149/Section66"
-          },
-          {
-            "citation": "M.G.L. c. 149, § 100",
-            "sourceUrl": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter149/Section100"
           }
         ],
         "confidence": "medium",
-        "note": "STATUTE CONFLICT: § 65 sets 6:30 a.m.-7 p.m. (9 p.m. July 1 through Labor Day) for under-16s, but § 60 (older text, still on the books) says no under-16 work before 6:30 a.m. or after 6:00 p.m. The Attorney General's posters use 7 p.m./9 p.m.; 19:00 is encoded per § 65 and the AG - a cautious consumer may prefer 18:00. The state statute itself sets only 8 h/day, 48 h/week and 6 days; the 3 h school-day / 18 h school-week caps on AG posters are the federal FLSA limits and are not in this entry. Split shifts must fall within 9 consecutive hours (§ 65). After 8 p.m. a minor must be directly supervised by an adult on site (§ 66). Meal break is the general all-employee rule (§ 100). No work during public-school hours (§ 60)."
+        "note": "STATUTE CONFLICT: § 65 sets 6:30 a.m.-7 p.m. (9 p.m. July 1 through Labor Day) for under-16s, but § 60 (older text, still on the books) says no under-16 work before 6:30 a.m. or after 6:00 p.m. The Attorney General's posters use 7 p.m./9 p.m.; 19:00 is encoded per § 65 and the AG - a cautious consumer may prefer 18:00. The state statute itself sets only 8 h/day, 48 h/week and 6 days; the 3 h school-day / 18 h school-week caps on AG posters are the federal FLSA limits and are not in this entry. Split shifts must fall within 9 consecutive hours (§ 65). After 8 p.m. a minor must be directly supervised by an adult on site (§ 66). No work during public-school hours (§ 60). A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 16,
@@ -2030,11 +1989,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": false,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "M.G.L. c. 149, § 66",
@@ -2047,14 +2002,10 @@ const JURISDICTIONS = {
           {
             "citation": "M.G.L. c. 149, § 56",
             "sourceUrl": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter149/Section56"
-          },
-          {
-            "citation": "M.G.L. c. 149, § 100",
-            "sourceUrl": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXI/Chapter149/Section100"
           }
         ],
         "confidence": "high",
-        "note": "latestEnd 22:00 on a night before a regularly scheduled school day; an establishment that stops serving customers at 10 p.m. may keep the minor until 22:15. On other nights 23:30 (restaurants and race tracks: midnight). After 8 p.m. the minor must be directly supervised by an adult on site (mall kiosk exception). Split shifts: § 67 says within 12 consecutive hours, but § 56 (manicuring, hairdressing and beauty-culture establishments) caps the spread at 10 consecutive hours. Limits apply year-round (no school-session distinction). Meal break is the general all-employee rule (§ 100)."
+        "note": "latestEnd 22:00 on a night before a regularly scheduled school day; an establishment that stops serving customers at 10 p.m. may keep the minor until 22:15. On other nights 23:30 (restaurants and race tracks: midnight). After 8 p.m. the minor must be directly supervised by an adult on site (mall kiosk exception). Split shifts: § 67 says within 12 consecutive hours, but § 56 (manicuring, hairdressing and beauty-culture establishments) caps the spread at 10 consecutive hours. Limits apply year-round (no school-session distinction). A meal or rest break rule that covers all employees, not minors only, is outside this package."
       }
     ]
   },
@@ -2105,8 +2056,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -2147,8 +2097,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -2204,23 +2153,15 @@ const JURISDICTIONS = {
           }
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "26 M.R.S. § 774(2)-(3), (5)",
             "sourceUrl": "https://legislature.maine.gov/statutes/26/title26sec774.html"
-          },
-          {
-            "citation": "26 M.R.S. § 601",
-            "sourceUrl": "https://legislature.maine.gov/statutes/26/title26sec601.html"
           }
         ],
         "confidence": "high",
-        "note": "During SUMMER VACATION the end time is 21:00 (no work 9 p.m.-7 a.m.); the statute ties this to 'summer vacation', not dates, so it is encoded as `vacation`, and 19:00 applies otherwise. Max 6 consecutive days. Section 774 does not apply to a minor with a high-school diploma/equivalency or who is emancipated. School-hours ban (under 17) has exceptions: excused from attendance, alternative-education work plan, approved vocational co-op, principal-granted early release. Meal break is Maine's general rule for all employees (30 minutes after 6 consecutive hours), not minor-specific; it does not apply where fewer than 3 employees are on duty and the work allows frequent short paid breaks."
+        "note": "During SUMMER VACATION the end time is 21:00 (no work 9 p.m.-7 a.m.); the statute ties this to 'summer vacation', not dates, so it is encoded as `vacation`, and 19:00 applies otherwise. Max 6 consecutive days. Section 774 does not apply to a minor with a high-school diploma/equivalency or who is emancipated. School-hours ban (under 17) has exceptions: excused from attendance, alternative-education work plan, approved vocational co-op, principal-granted early release. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 16,
@@ -2242,23 +2183,15 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "26 M.R.S. § 774(1), (3), (5)",
             "sourceUrl": "https://legislature.maine.gov/statutes/26/title26sec774.html"
-          },
-          {
-            "citation": "26 M.R.S. § 601",
-            "sourceUrl": "https://legislature.maine.gov/statutes/26/title26sec601.html"
           }
         ],
         "confidence": "high",
-        "note": "16-17 limits apply only to a minor ENROLLED IN SCHOOL; not to a high-school graduate/equivalency holder or emancipated minor. Up to 8 hours on the last scheduled day of the school week (schoolDay 6 kept as stricter). The 50-hour week also applies in a school week with fewer than 3 school days and in the first and last week of the school calendar (schoolWeek 24 kept as stricter). Start 07:00 on a school day, 05:00 on any other day; end 22:15 before a school day, midnight ('24:00') otherwise. A minor under 17 may not work during public-school hours (same exceptions as 14-15). Meal break is the general all-employee rule."
+        "note": "16-17 limits apply only to a minor ENROLLED IN SCHOOL; not to a high-school graduate/equivalency holder or emancipated minor. Up to 8 hours on the last scheduled day of the school week (schoolDay 6 kept as stricter). The 50-hour week also applies in a school week with fewer than 3 school days and in the first and last week of the school calendar (schoolWeek 24 kept as stricter). Start 07:00 on a school day, 05:00 on any other day; end 22:15 before a school day, midnight ('24:00') otherwise. A minor under 17 may not work during public-school hours (same exceptions as 14-15). A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 17,
@@ -2280,23 +2213,15 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": false,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "26 M.R.S. § 774(1), (5)",
             "sourceUrl": "https://legislature.maine.gov/statutes/26/title26sec774.html"
-          },
-          {
-            "citation": "26 M.R.S. § 601",
-            "sourceUrl": "https://legislature.maine.gov/statutes/26/title26sec601.html"
           }
         ],
         "confidence": "high",
-        "note": "Same as 16 except the school-hours ban (under 17 only) does not apply. Limits apply only to a 17-year-old enrolled in school. Up to 8 hours on the last school day of the week and 50 h in short (<3 day) school weeks and the first/last week of the school calendar (stricter 6 h / 24 h kept). Start 07:00 on a school day, 05:00 otherwise; end 22:15 before a school day, midnight ('24:00') otherwise. Meal break is the general all-employee rule."
+        "note": "Same as 16 except the school-hours ban (under 17 only) does not apply. Limits apply only to a 17-year-old enrolled in school. Up to 8 hours on the last school day of the week and 50 h in short (<3 day) school weeks and the first/last week of the school calendar (stricter 6 h / 24 h kept). Start 07:00 on a school day, 05:00 otherwise; end 22:15 before a school day, midnight ('24:00') otherwise. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       }
     ]
   },
@@ -2347,8 +2272,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -2388,8 +2312,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -2790,8 +2713,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3135,8 +3057,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3173,8 +3094,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3405,11 +3325,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "N.Y. Lab. Law § 142",
@@ -3418,14 +3334,10 @@ const JURISDICTIONS = {
           {
             "citation": "NYSDOL, Hours of Work for Minors",
             "sourceUrl": "https://dol.ny.gov/hours-work-minors"
-          },
-          {
-            "citation": "N.Y. Lab. Law § 162",
-            "sourceUrl": "https://www.nysenate.gov/legislation/laws/LAB/162"
           }
         ],
         "confidence": "high",
-        "note": "A 'school week' (18-hour cap) is any week school is in session; a non-school week is one in which school is closed the entire calendar week. On a Saturday or other non-school day within a school week the cap is 8 hours. 7 a.m.-7 p.m. every day, to 9 p.m. June 21-Labor Day. Approved supervised work-study students may work 23 hours/week. Junior counselors at children's camps (June-August) are exempt from the time window. The ban on school-hours work comes from § 131, which allows work only when the minor is not required to attend school. Meal break is New York's general rule (Lab. Law § 162): a shift of more than 6 hours gets at least 30 minutes. A shift starting between 1 p.m. and 6 a.m. needs 45 minutes, and a shift from before 11 a.m. to after 7 p.m. an extra 20; those are not encoded."
+        "note": "A 'school week' (18-hour cap) is any week school is in session; a non-school week is one in which school is closed the entire calendar week. On a Saturday or other non-school day within a school week the cap is 8 hours. 7 a.m.-7 p.m. every day, to 9 p.m. June 21-Labor Day. Approved supervised work-study students may work 23 hours/week. Junior counselors at children's camps (June-August) are exempt from the time window. The ban on school-hours work comes from § 131, which allows work only when the minor is not required to attend school. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 16,
@@ -3447,11 +3359,7 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "N.Y. Lab. Law § 143",
@@ -3460,14 +3368,10 @@ const JURISDICTIONS = {
           {
             "citation": "NYSDOL, Hours of Work for Minors",
             "sourceUrl": "https://dol.ny.gov/hours-work-minors"
-          },
-          {
-            "citation": "N.Y. Lab. Law § 162",
-            "sourceUrl": "https://www.nysenate.gov/legislation/laws/LAB/162"
           }
         ],
         "confidence": "high",
-        "note": "The school-week limits (4 hours on a day before a school day, 8 on Friday, Saturday, Sunday and holidays, 28 a week, 6 days, 6 a.m.-10 p.m.) apply only to minors attending day school while school is in session. maxHours.schoolDay 4 really applies to days that PRECEDE a school day (Mon-Thu plus Sunday); Friday allows 8. Later work during school weeks needs written parental consent: until midnight on a night before a non-school day, or on a school night if the school also certifies satisfactory academic standing - not encoded (22:00 every night). In vacation (school not in session), or for minors not attending school, the limits are 8 hours/day, 48/week, 6 days, and no work from midnight to 6 a.m.; the 22:00 end is therefore stricter than the law during vacations. In a holiday week, one 10-hour day and four 9-hour days are allowed within the 48. Co-op education students may work 6 hours on a day before a school day. Meal break is New York's general rule (Lab. Law § 162): a shift of more than 6 hours gets at least 30 minutes. A shift starting between 1 p.m. and 6 a.m. needs 45 minutes, and a shift from before 11 a.m. to after 7 p.m. an extra 20; those are not encoded."
+        "note": "The school-week limits (4 hours on a day before a school day, 8 on Friday, Saturday, Sunday and holidays, 28 a week, 6 days, 6 a.m.-10 p.m.) apply only to minors attending day school while school is in session. maxHours.schoolDay 4 really applies to days that PRECEDE a school day (Mon-Thu plus Sunday); Friday allows 8. Later work during school weeks needs written parental consent: until midnight on a night before a non-school day, or on a school night if the school also certifies satisfactory academic standing - not encoded (22:00 every night). In vacation (school not in session), or for minors not attending school, the limits are 8 hours/day, 48/week, 6 days, and no work from midnight to 6 a.m.; the 22:00 end is therefore stricter than the law during vacations. In a holiday week, one 10-hour day and four 9-hour days are allowed within the 48. Co-op education students may work 6 hours on a day before a school day. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       }
     ]
   },
@@ -3518,8 +3422,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3552,8 +3455,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3613,8 +3515,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3704,8 +3605,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3742,8 +3642,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3805,8 +3704,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3842,8 +3740,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -3903,11 +3800,7 @@ const JURISDICTIONS = {
           }
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 20,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "R.I. Gen. Laws § 28-3-1 (time of day)",
@@ -3920,14 +3813,10 @@ const JURISDICTIONS = {
           {
             "citation": "R.I. Gen. Laws § 28-3-11(a) (8/day, 40/week)",
             "sourceUrl": "http://webserver.rilegislature.gov/Statutes/TITLE28/28-3/28-3-11.htm"
-          },
-          {
-            "citation": "R.I. Gen. Laws § 28-3-14 (mealtime)",
-            "sourceUrl": "http://webserver.rilegislature.gov/Statutes/TITLE28/28-3/28-3-14.htm"
           }
         ],
         "confidence": "high",
-        "note": "State caps are 8 h/day and 40 h/week regardless of school (federal 3/18 is stricter in session). End time extends to 9 p.m. 'only during school vacations' (not dates) - encoded as `vacation`. 8-hour rest interval between workdays. Mealtime (§ 28-3-14, all employees): 20 minutes within a 6-hour shift, 30 minutes within an 8-hour shift; does not apply to employers with fewer than 3 people on the shift, or licensed healthcare facilities."
+        "note": "State caps are 8 h/day and 40 h/week regardless of school (federal 3/18 is stricter in session). End time extends to 9 p.m. 'only during school vacations' (not dates) - encoded as `vacation`. 8-hour rest interval between workdays. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       },
       {
         "minAge": 16,
@@ -3949,23 +3838,15 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": false,
-        "mealBreak": {
-          "afterHours": 6,
-          "minutes": 20,
-          "minorSpecific": false
-        },
+        "mealBreak": null,
         "citations": [
           {
             "citation": "R.I. Gen. Laws § 28-3-11",
             "sourceUrl": "http://webserver.rilegislature.gov/Statutes/TITLE28/28-3/28-3-11.htm"
-          },
-          {
-            "citation": "R.I. Gen. Laws § 28-3-14 (mealtime)",
-            "sourceUrl": "http://webserver.rilegislature.gov/Statutes/TITLE28/28-3/28-3-14.htm"
           }
         ],
         "confidence": "high",
-        "note": "48 h/week and 9 h/day (9 3/5 h/day when 48 hours are worked in 5 days); 8-hour rest between workdays. The 6 a.m./11:30 p.m. (1:30 a.m., '25:30', before a non-school day) limits apply only to minors regularly attending school. During school VACATIONS there is no limit on daily or weekly hours (§ 28-3-11(c)); the nonSchoolDay 9 is the in-session rule for a weekend day and is stricter than the law in vacations. Mealtime as for 14-15 (20 min/6 h, 30 min/8 h; not for employers with <3 on shift)."
+        "note": "48 h/week and 9 h/day (9 3/5 h/day when 48 hours are worked in 5 days); 8-hour rest between workdays. The 6 a.m./11:30 p.m. (1:30 a.m., '25:30', before a non-school day) limits apply only to minors regularly attending school. During school VACATIONS there is no limit on daily or weekly hours (§ 28-3-11(c)); the nonSchoolDay 9 is the in-session rule for a weekend day and is stricter than the law in vacations. A meal or rest break rule that covers all employees, not minors only, is outside this package."
       }
     ]
   },
@@ -4192,8 +4073,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4226,8 +4106,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4349,8 +4228,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4387,8 +4265,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4456,8 +4333,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4498,8 +4374,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4649,8 +4524,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 4,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4690,8 +4564,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4755,8 +4628,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4793,8 +4665,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 6,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {
@@ -4854,8 +4725,7 @@ const JURISDICTIONS = {
         "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
-          "minutes": 30,
-          "minorSpecific": true
+          "minutes": 30
         },
         "citations": [
           {

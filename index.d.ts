@@ -48,7 +48,7 @@ export interface Rules {
   readonly maxDaysPerWeek: Limit<number> | null;
   readonly noWorkDuringSchoolHours: boolean;
   readonly summer: ReadonlyArray<{ jurisdiction: string; from: string; to: string; latestEnd: string }>;
-  readonly mealBreaks: ReadonlyArray<Source & { afterHours: number; minutes: number; minorSpecific: boolean }>;
+  readonly mealBreaks: ReadonlyArray<Source & { afterHours: number; minutes: number }>;
   readonly personalCareNotes: ReadonlyArray<{ jurisdiction: string; note: string }>;
 }
 
