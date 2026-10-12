@@ -85,13 +85,13 @@ export interface CheckScheduleInput {
   jurisdiction: JurisdictionInput;
   /** 'YYYY-MM-DD' */
   birthDate: string;
-  /** every shift in the weeks being checked; a weekly limit sees only what you pass */
+  /** every shift in the weeks being checked; shifts may not overlap. A weekly, consecutive-day or 24-hour limit sees only what you pass */
   shifts: readonly Shift[];
   /** days school is in session. Default: every Monday to Friday (the strictest reading) */
   schoolDays?: DaySet;
   /** days of a school vacation, for the rules that loosen then. Default: none */
   vacationDays?: DaySet;
-  /** Default 07:00–15:00, reported in `assumptions` when used */
+  /** Default 07:00–15:00, a guess: pass the school's. Reported in `assumptions` whenever a school-hours rule is applied */
   schoolHours?: { start: string; end: string };
   /** the employer's fixed workweek: 0 = Sunday (default) … 6 = Saturday */
   weekStartsOn?: number;
@@ -127,6 +127,7 @@ export interface Violation extends Source {
   /** the shift's index in `shifts`, and its `id` */
   readonly shift?: number;
   readonly id?: unknown;
+  /** hours (rounded to 2 decimals), a count, an age, or a time 'HH:MM' on the 24-hour-plus scale ('25:30') */
   readonly limit: number | string;
   readonly actual: number | string;
   /** other laws that set the same binding limit */
@@ -152,7 +153,7 @@ export interface CheckResult {
   readonly assumptions: readonly Assumption[];
 }
 
-/** Check a worker's shifts against every limit that applies to them. Workers 18 and older are not checked. */
+/** Check a worker's shifts against every limit that applies to them. Shifts worked at 18 or older are not checked themselves, but count toward a week with a day worked as a minor. */
 export function checkSchedule(input: CheckScheduleInput): CheckResult;
 
 /** The jurisdictions the tables cover, and the date they were checked. */

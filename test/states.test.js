@@ -72,7 +72,7 @@ test('a vacation rule follows the school calendar: the last day of a break is st
   // Kentucky sets no end time for 16-17 when school is out, but 10:30 p.m. before a school day.
   const breakDays = ['2026-12-21', '2026-12-22', '2026-12-23', '2026-12-24', '2026-12-25', '2026-12-26', '2026-12-27', '2026-12-28', '2026-12-29', '2026-12-30', '2026-12-31', '2027-01-01', '2027-01-02', '2027-01-03'];
   const opts = { vacationDays: breakDays };
-  assert.deepEqual(rules(run('US-KY', SIXTEEN, [{ date: '2026-12-22', start: '17:00', end: '24:30', breakMinutes: 30 }], opts)), []);
+  assert.deepEqual(rules(run('US-KY', SIXTEEN, [{ date: '2026-12-22', start: '17:00', end: '00:30', breakMinutes: 30 }], opts)), []);
   assert.deepEqual(rules(run('US-KY', SIXTEEN, [{ date: '2027-01-03', start: '17:00', end: '23:30', breakMinutes: 30 }], opts)), ['ends_too_late']);
 });
 

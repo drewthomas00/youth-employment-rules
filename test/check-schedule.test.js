@@ -130,8 +130,8 @@ test('an unknown place is unknown, never "no limits"', () => {
   assert.equal(r.known, false);
   assert.equal(r.reason, 'unknown_jurisdiction');
   assert.equal(rulesFor('CA-ON', { age: 15, on: MON }), null);
-  assert.equal(checkSchedule({ jurisdiction: 'GB', birthDate: ADULT, shifts: [{ date: MON, start: '09:00', end: '17:00' }] }).known, true,
-    'an adult needs no rules, anywhere');
+  assert.equal(checkSchedule({ jurisdiction: 'GB', birthDate: ADULT, shifts: [{ date: MON, start: '09:00', end: '17:00' }] }).known, false,
+    'a place outside the tables is unknown, whoever works there');
 });
 
 test('a shift past midnight is compared on the 24h+ clock', () => {
@@ -170,4 +170,103 @@ test('with a time zone, a shift across a daylight-saving change counts real hour
   assert.throws(() => checkSchedule({ jurisdiction: 'US-TX', birthDate: '2011-06-15', shifts: [{ date: '2026-03-08', start: '02:30', end: '06:00' }], timeZone: 'America/Chicago' }), /does not exist/);
   assert.throws(() => checkSchedule({ jurisdiction: 'US-TX', birthDate: '2011-06-15', shifts: [], timeZone: 'Mars/Olympus' }), /timeZone/);
   assert.throws(() => checkSchedule({ jurisdiction: 'US-TX', birthDate: '2011-06-15', shifts: [], timezone: 'UTC' }), /Unknown option/);
+});
+
+// Code review, 2026-10-11.
+
+test('the minimum age and the permit cite their own law, not the hours band', () => {
+  const r = rulesFor('US-NY', { age: 15, on: MON });
+  assert.notDeepEqual(r.workPermitRequiredUnder.sources[0].citations, rulesFor('US-NY', { age: 15, on: MON }).maxHoursSchoolDay.sources[0].citations);
+  const young = checkSchedule({ jurisdiction: 'US-MS', birthDate: '2013-03-01', shifts: [{ date: SAT, start: '10:00', end: '12:00' }] });
+  const v = young.violations.find((x) => x.rule === 'below_minimum_age');
+  assert.ok(v.citations.length > 0 && v.confidence, 'a breach always names its law');
+});
+
+test('a weekly limit uses the youngest age that week, whichever day is worked first', () => {
+  // Turns 16 on Wednesday 2026-10-14; four 5-hour shifts from Wednesday are 20 hours in a school week, at 15.
+  const shifts = ['2026-10-14', '2026-10-15', '2026-10-16', '2026-10-17'].map((date) => ({ date, start: '16:00', end: '21:00' }));
+  const r = checkSchedule({ jurisdiction: 'US-MS', birthDate: '2010-10-14', shifts });
+  assert.ok(r.violations.some((x) => x.rule === 'max_hours_school_week' && x.limit === 18));
+});
+
+test('turning 18 mid-week: the hours worked at 18 still count toward that week', () => {
+  // New York 16-17: 28 hours in a school week. 8 hours at 17, then 32 at 18.
+  const shifts = [{ date: '2026-10-12', start: '14:00', end: '22:00' }, ...['2026-10-14', '2026-10-15', '2026-10-16', '2026-10-17'].map((date) => ({ date, start: '14:00', end: '22:00' }))];
+  const r = checkSchedule({ jurisdiction: 'US-NY', birthDate: '2008-10-13', shifts, weekStartsOn: 1, hasWorkPermit: true });
+  assert.ok(r.violations.some((x) => x.rule === 'max_hours_school_week'));
+});
+
+test('the default school hours are reported whenever a school-hours rule is applied', () => {
+  const r = checkSchedule({ jurisdiction: 'US-MS', birthDate: FIFTEEN, shifts: [{ date: MON, start: '15:00', end: '18:00' }] });
+  assert.ok(r.assumptions.includes('school_hours_default_07_15'));
+  const given = checkSchedule({ jurisdiction: 'US-MS', birthDate: FIFTEEN, shifts: [{ date: MON, start: '15:00', end: '18:00' }], schoolHours: { start: '08:00', end: '15:30' } });
+  assert.ok(given.violations.some((x) => x.rule === 'during_school_hours'));
+});
+
+test('options are checked, not guessed at', () => {
+  const base = { jurisdiction: 'US-MS', birthDate: FIFTEEN, shifts: [{ date: MON, start: '15:00', end: '19:00' }] };
+  assert.throws(() => checkSchedule({ ...base, schoolDays: ['10/12/2026'] }), TypeError);
+  assert.throws(() => checkSchedule({ ...base, schoolDays: () => 1 }), /true or false/);
+  assert.throws(() => checkSchedule({ ...base, hasWorkPermit: 'no' }), /hasWorkPermit/);
+  assert.throws(() => checkSchedule({ ...base, schoolHours: null }), /schoolHours/);
+  assert.throws(() => checkSchedule({ ...base, shifts: [{ date: MON, start: '15:00', End: '19:00' }] }), /unknown key/);
+  assert.throws(() => checkSchedule({ ...base, shifts: [{ date: MON, start: '00:00', end: '29:00' }] }), /before 24:00/);
+  assert.throws(() => checkSchedule({ ...base, shifts: [{ date: MON, start: '15:00', end: '19:00' }, { date: MON, start: '18:00', end: '20:00' }] }), /overlap/);
+  assert.throws(() => checkSchedule({ ...base, birthDate: '2027-01-01' }), /before birthDate/);
+  assert.equal(normalizeJurisdiction({ country: 'US', subdivision: 'US-CA' }), 'US-CA');
+});
+
+test('hours in any 24 use the placed breaks', () => {
+  // Colorado 16-17: 8 in any 24. Saturday 13:00-15:00, then Sunday 05:00-17:00 with 4 hours off from 13:00:
+  // the 24 hours from Saturday 13:00 hold 2 + 8 hours.
+  const shifts = [{ date: '2026-10-17', start: '13:00', end: '15:00' }, { date: '2026-10-18', start: '05:00', end: '17:00', breaks: [{ start: '09:00', minutes: 30 }, { start: '13:00', minutes: 210 }] }];
+  const r = checkSchedule({ jurisdiction: 'US-CO', birthDate: SIXTEEN, shifts });
+  assert.ok(r.violations.some((x) => x.rule === 'max_hours_in_24h' && x.actual === 9.5));
+});
+
+test('with a time zone, placed breaks are measured in real time too', () => {
+  // Alaska 16-17: no more than 5 hours without 30 minutes. 22:00-04:00 across the fall-back, break at 02:30:
+  // 5½ real hours before it.
+  const shifts = [{ date: '2026-10-31', start: '22:00', end: '04:00', breaks: [{ start: '02:30', minutes: 30 }] }];
+  const r = checkSchedule({ jurisdiction: 'US-AK', birthDate: SIXTEEN, shifts, hasWorkPermit: true, timeZone: 'America/Anchorage' });
+  assert.deepEqual(r.violations.map((x) => x.rule), ['meal_break']);
+  assert.equal(r.violations[0].actual, 5.5);
+});
+
+test('federal law alone: jurisdiction US', () => {
+  const r = checkSchedule({ jurisdiction: 'US', birthDate: FIFTEEN, shifts: [{ date: MON, start: '15:00', end: '19:30' }] });
+  assert.equal(r.known, true);
+  assert.deepEqual(r.violations.map((x) => x.rule).sort(), ['ends_too_late', 'max_hours_school_day']);
+});
+
+test('a rule not yet in force answers unknown', () => {
+  const r = checkSchedule({ jurisdiction: 'US-WA', birthDate: FIFTEEN, shifts: [{ date: '2026-06-30', start: '10:00', end: '12:00' }] });
+  assert.equal(r.known, false);
+  assert.equal(r.reason, 'no_rule_in_force');
+});
+
+test('a summer window can start on Memorial Day', () => {
+  const r = rulesFor('US-MD', { age: 15, on: '2026-05-25' });
+  assert.ok(r.summer.some((x) => x.from === '2026-05-25'));
+});
+
+test('times are reported on one scale', () => {
+  const r = checkSchedule({ jurisdiction: 'US-CA', birthDate: SIXTEEN, shifts: [{ date: SAT, start: '18:00', end: '01:30', breakMinutes: 30 }], hasWorkPermit: true });
+  const v = r.violations.find((x) => x.rule === 'ends_too_late');
+  assert.equal(v.limit, '24:30');
+  assert.equal(v.actual, '25:30');
+});
+
+test('the README example runs as shown', () => {
+  const r = checkSchedule({ jurisdiction: 'US-NY', birthDate: '2011-06-15', weekStartsOn: 1, shifts: [{ date: '2026-10-12', start: '15:30', end: '19:30', id: 'shift-81' }] });
+  assert.deepEqual(r.violations.map((v) => [v.rule, v.limit, v.actual, v.jurisdiction, v.alsoSetBy]), [
+    ['ends_too_late', '19:00', '19:30', 'US', ['US-NY']],
+    ['max_hours_school_day', 3, 4, 'US', ['US-NY']],
+  ]);
+  assert.equal(r.requirements[0].requiredUnder, 18);
+});
+
+test('every documented name imports through ESM', async () => {
+  const mod = await import('../index.js');
+  for (const name of ['checkSchedule', 'rulesFor', 'coverage', 'normalizeJurisdiction', 'AS_OF', 'ADULT_AGE', 'DEFAULT_SCHOOL_HOURS']) assert.ok(name in mod, name);
 });

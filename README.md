@@ -63,17 +63,17 @@ checkSchedule({
 
 | Option | Default | Meaning |
 |---|---|---|
-| `jurisdiction` | — | `'US-CA'`, or `{ country: 'US', subdivision: 'CA' }`. Where the work is done. |
+| `jurisdiction` | — | `'US-CA'`, or `{ country: 'US', subdivision: 'CA' }` (`'US-CA'` as the subdivision works too). Where the work is done. `'US'` alone checks federal law only. |
 | `birthDate` | — | `'YYYY-MM-DD'`. A 29 February birthday is reached on 1 March in a common year. |
-| `shifts` | — | `{ date, start, end, breaks?, breakMinutes?, id? }`. Times are `'HH:MM'`; an end at or before the start runs past midnight. A shift counts toward the day it starts. `breaks` (`{ start, minutes }`) places unpaid breaks so a meal rule's stretches of work are checked; with only `breakMinutes`, the total is checked and `assumptions` says `break_timing_unchecked`. Pass every shift in the weeks you check — a weekly, consecutive-day or 24-hour limit sees only what you pass. |
+| `shifts` | — | `{ date, start, end, breaks?, breakMinutes?, id? }`. `start` and `end` are times of day, `'00:00'`–`'23:59'`; an end at or before the start runs past midnight, and a shift is at most 24 hours. A shift counts toward the day it starts. Shifts may not overlap. `breaks` (`{ start, minutes }`) places unpaid breaks, so a meal rule is checked stretch by stretch and the 24-hour limit counts exactly; with only `breakMinutes`, the total is checked and `assumptions` says `break_timing_unchecked`. Unknown keys throw. Pass every shift in the weeks you check — a weekly, consecutive-day or 24-hour limit sees only what you pass. |
 | `schoolDays` | every Monday–Friday | The days school is in session: a function `(date) => boolean`, an array or a Set. The default is the strictest reading, and is reported in `assumptions`. |
 | `vacationDays` | none | Days of a school vacation, for the rules that loosen then. A vacation day is never a school day. |
-| `schoolHours` | 07:00–15:00 | For the "not during school hours" and "school plus work" rules. The default is reported in `assumptions` when a rule used it. |
+| `schoolHours` | 07:00–15:00 | For the "not during school hours" and "school plus work" rules. The default is a guess, not a strict reading (many schools end later): pass the school's. It is reported in `assumptions` whenever one of those rules was applied. |
 | `weekStartsOn` | `0` (Sunday) | The employer's fixed workweek, which weekly limits are counted over. |
 | `hasWorkPermit` | — | `false` reports a required permit as a breach; omitted, it is listed in `requirements`. |
-| `timeZone` | — | The workplace's IANA zone, e.g. `'America/Chicago'`. Hours worked are then real time, so an overnight shift across a daylight-saving change counts the hour it gains or loses. Without it, hours are wall-clock hours. |
+| `timeZone` | — | The workplace's IANA zone, e.g. `'America/Chicago'`. Time worked — a shift's length, its stretches between breaks, the 24-hour window — is then real time, so an overnight shift across a daylight-saving change counts the hour it gains or loses. A time that does not exist that day (02:30 when the clocks go forward) throws; a time that happens twice is read as its first occurrence. Without it, time is wall-clock time. |
 
-Workers 18 and older are not checked: child labor limits stop at 18 everywhere, whatever the age of majority. Unknown option names throw.
+Shifts worked at 18 or older are not checked themselves: child labor limits stop at 18, whatever the age of majority. A place the tables do not cover answers `known: false` whoever works there. Unknown option names throw.
 
 ### Breaches
 
@@ -91,7 +91,7 @@ Workers 18 and older are not checked: child labor limits stop at 18 everywhere, 
 | `max_consecutive_days` | run of days | Days worked in a row, across workweeks (Maine, New Hampshire, Pennsylvania, Hawaii). |
 | `max_hours_in_24h` | 24 hours | Hours worked in the 24 hours from the start of a shift (Colorado, Illinois). |
 
-A weekly limit uses the youngest age the worker is during that week. A daily or per-shift limit uses their age that day.
+A weekly limit applies to every workweek with a day worked as a minor, at the youngest age the worker is that week, and counts all the hours worked that week, including any after an 18th birthday (the stricter reading). A daily or per-shift limit uses their age that day. A meal rule's stretch runs from the start of the shift, or the end of a break at least as long as the rule's, to the next such break; a shorter break does not end it. Hours in the results are rounded to two decimals; times are `'HH:MM'` on the tables' 24-hour-plus scale (`'25:30'` is 1:30 a.m. the next morning).
 
 ### `rulesFor(jurisdiction, { age, on })`
 
@@ -179,7 +179,7 @@ Federal law covers most employers (any enterprise with $500,000 in annual sales,
 ## Known limitations
 
 - **Rules the shape cannot hold are noted, not checked:** Maryland's and Delaware's 8 consecutive hours free of work and school (encoded as a daily cap where it implies one), Kentucky's, Oregon's and Utah's paid rest breaks for minors, conditions that turn on facts the input does not carry (a parent's consent, a diploma, the industry, an employer outside the FLSA). Each is in its band's `note`, and the stricter reading is encoded.
-- **Meal timing needs placed breaks.** With only `breakMinutes`, the checker can tell that a shift has too little break time, not that the break came too late.
+- **Meal timing needs placed breaks.** With only `breakMinutes`, the checker can tell that a shift has too little break time, not that a break came too late or that it was one break rather than several short ones.
 - **Without `timeZone`, hours are wall-clock hours.** A shift across a daylight-saving change is off by an hour.
 - **School calendars are yours to supply.** The default — every weekday is a school day, and school runs 07:00–15:00 — is the strictest reading and is reported in `assumptions`.
 - **Some entries rest on an agency summary or an unofficial copy** (`confidence: 'medium'`); see the coverage table.

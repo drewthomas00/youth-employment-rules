@@ -67,7 +67,7 @@ function addDays(date, days) {
  * @returns {number}
  */
 function weekday(date) {
-  return (dayNumber(parseDate('date', date)) + 4) % 7; // 1970-01-01 was a Thursday
+  return (((dayNumber(parseDate('date', date)) + 4) % 7) + 7) % 7; // 1970-01-01 was a Thursday
 }
 
 /**
