@@ -145,6 +145,7 @@ test('inputs that are not what they claim throw', () => {
   assert.throws(() => ms([{ date: MON, start: '09:00', end: '12:00', breakMinutes: 200 }]), TypeError);
   assert.throws(() => ms([], { weekStartsOn: 7 }), TypeError);
   assert.throws(() => normalizeJurisdiction('California'), TypeError);
+  assert.throws(() => rulesFor('US', undefined), /rulesFor needs \{ age, on \}/);
   assert.equal(normalizeJurisdiction({ country: 'us', subdivision: 'ca' }), 'US-CA');
 });
 

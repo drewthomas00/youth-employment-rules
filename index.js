@@ -165,7 +165,9 @@ function cite(layer, from) {
  * @param {{ age: number, on: string }} opts
  * @returns {object | null}
  */
-function rulesFor(jurisdiction, { age, on }) {
+function rulesFor(jurisdiction, opts) {
+  if (!opts || typeof opts !== 'object') throw new TypeError(`rulesFor needs { age, on }, got ${describe(opts)}`);
+  const { age, on } = opts;
   const code = normalizeJurisdiction(jurisdiction);
   parseDate('on', on);
   if (!Number.isInteger(age) || age < 0) throw new TypeError(`age must be a whole number of years, got ${describe(age)}`);
