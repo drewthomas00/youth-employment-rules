@@ -16,7 +16,7 @@ const JURISDICTIONS = {
     "minimumAge": {
       "age": 14,
       "citation": "29 U.S.C. § 203(l); 29 CFR § 570.2(a)(1)(i); 29 CFR Part 570 Subpart C (Reg. 3)",
-      "sourceUrl": "https://www.law.cornell.edu/cfr/text/29/570.2",
+      "sourceUrl": "https://www.ecfr.gov/current/title-29/section-570.2",
       "confidence": "high",
       "note": "The FLSA's general non-agricultural minimum age is 16; 14- and 15-year-olds may work only in occupations other than manufacturing and mining, within the Reg. 3 (Subpart C) occupation list and the hours limits below. 14 is the floor for non-agricultural, non-hazardous retail/service work. Parent-employing-own-child is exempt (except manufacturing, mining, hazardous). 18 is the minimum for Hazardous Occupations Orders (Subpart E)."
     },
@@ -52,11 +52,11 @@ const JURISDICTIONS = {
         "citations": [
           {
             "citation": "29 CFR § 570.35(a)",
-            "sourceUrl": "https://www.law.cornell.edu/cfr/text/29/570.35"
+            "sourceUrl": "https://www.ecfr.gov/current/title-29/section-570.35"
           },
           {
             "citation": "29 U.S.C. § 203(l)",
-            "sourceUrl": "https://www.law.cornell.edu/uscode/text/29/203"
+            "sourceUrl": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section203&num=0&edition=prelim"
           }
         ],
         "confidence": "high",
@@ -86,7 +86,7 @@ const JURISDICTIONS = {
         "citations": [
           {
             "citation": "29 U.S.C. § 203(l); 29 CFR § 570.2(a)",
-            "sourceUrl": "https://www.law.cornell.edu/cfr/text/29/570.2"
+            "sourceUrl": "https://www.ecfr.gov/current/title-29/section-570.2"
           }
         ],
         "confidence": "high",
@@ -300,8 +300,8 @@ const JURISDICTIONS = {
       "age": 14,
       "citation": "Ark. Code Ann. § 11-6-104",
       "sourceUrl": "https://codes.findlaw.com/ar/title-11-labor-and-industrial-relations/ar-code-sect-11-6-104/",
-      "confidence": "high",
-      "note": "No child under 14 may be employed, except during school vacations in an occupation owned or controlled by the child's parent or guardian (and entertainment with a permit). Confirmed by the Arkansas Division of Labor child labor page: 'In most cases, a child must be at least fourteen (14) to be employed.'"
+      "confidence": "medium",
+      "note": "No child under 14 may be employed, except during school vacations in an occupation owned or controlled by the child's parent or guardian (and entertainment with a permit). Confirmed by the Arkansas Division of Labor child labor page: 'In most cases, a child must be at least fourteen (14) to be employed.' Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "workPermit": null,
     "personalCareNote": null,
@@ -337,8 +337,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://labor.arkansas.gov/labor/labor-standards/child-labor/"
           }
         ],
-        "confidence": "high",
-        "note": "The state's limits do not distinguish school vs. non-school days/weeks: 8 hours/day, 48 hours/week, 6 days/week, 6:00 a.m.-7:00 p.m., until 9:00 p.m. on nights preceding non-school days. These are much looser than federal (3/18 school, 40 non-school, 7 a.m.-7 p.m.), which the Division page says 'will remain in effect and will be enforced'. No state school-hours or meal-break rule found."
+        "confidence": "medium",
+        "note": "The state's limits do not distinguish school vs. non-school days/weeks: 8 hours/day, 48 hours/week, 6 days/week, 6:00 a.m.-7:00 p.m., until 9:00 p.m. on nights preceding non-school days. These are much looser than federal (3/18 school, 40 non-school, 7 a.m.-7 p.m.), which the Division page says 'will remain in effect and will be enforced'. No state school-hours or meal-break rule found. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -371,8 +371,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://labor.arkansas.gov/labor/labor-standards/child-labor/"
           }
         ],
-        "confidence": "high",
-        "note": "§ 11-6-110 covers children 'under seventeen', i.e. 16-year-olds only. 10 consecutive hours/day and 10 hours in any 24-hour period, 54 h/week, 6 days, 6 a.m.-11 p.m. On nights preceding a NON-school day a 16-year-old may work past 11 p.m. (to midnight and even midnight-6 a.m.), but NOT in a retail store under 4,500 sq ft, without direct supervision by an adult 21+, in alcohol-serving businesses, truck stops/service stations, as security/delivery, or against a local curfew (Division rule). Because that later window depends on those facts, latestEndBeforeNonSchoolDay is encoded as 23:00 (stricter). The Division measures compliance midnight-to-midnight with a 10-hour rest between shifts for the late-night allowance."
+        "confidence": "medium",
+        "note": "§ 11-6-110 covers children 'under seventeen', i.e. 16-year-olds only. 10 consecutive hours/day and 10 hours in any 24-hour period, 54 h/week, 6 days, 6 a.m.-11 p.m. On nights preceding a NON-school day a 16-year-old may work past 11 p.m. (to midnight and even midnight-6 a.m.), but NOT in a retail store under 4,500 sq ft, without direct supervision by an adult 21+, in alcohol-serving businesses, truck stops/service stations, as security/delivery, or against a local curfew (Division rule). Because that later window depends on those facts, latestEndBeforeNonSchoolDay is encoded as 23:00 (stricter). The Division measures compliance midnight-to-midnight with a 10-hour rest between shifts for the late-night allowance. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 17,
@@ -486,16 +486,16 @@ const JURISDICTIONS = {
       "age": 12,
       "citation": "Cal. Educ. Code § 49111; Cal. Lab. Code § 1391(a)(1)",
       "sourceUrl": "https://www.dir.ca.gov/dlse/minorssummarycharts.pdf",
-      "confidence": "high",
-      "note": "Under 12: no employment except entertainment (Labor Commissioner permit). 12- and 13-year-olds may work, with a permit, ONLY on non-school days (school holidays/vacations, usually construed to include weekends) — never on any school day. 14 is the age for ordinary employment on school days outside school hours. Federal FLSA (14) is stricter for 12–13 in covered enterprises."
+      "confidence": "medium",
+      "note": "Under 12: no employment except entertainment (Labor Commissioner permit). 12- and 13-year-olds may work, with a permit, ONLY on non-school days (school holidays/vacations, usually construed to include weekends) — never on any school day. 14 is the age for ordinary employment on school days outside school hours. Federal FLSA (14) is stricter for 12–13 in covered enterprises. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "workPermit": {
       "requiredUnder": 18,
       "issuer": "school district (superintendent or designee of the minor's school; county superintendent when schools are closed), on a 'Statement of Intent to Employ a Minor and Request for Work Permit' (DLSE B1-1)",
       "citation": "Cal. Educ. Code §§ 49110, 49160-49164; Cal. Lab. Code § 1299",
       "sourceUrl": "https://www.dir.ca.gov/dlse/minorssummarycharts.pdf",
-      "confidence": "high",
-      "note": "Both a Permit to Work (to the minor) and a Permit to Employ (to the employer) are required unless the minor has graduated from high school or holds an equivalent. Permits may set tighter hours than the statute and can be revoked by the school or the Labor Commissioner. Not required for self-employment, newspaper carriers, casual work in private homes, or parent's domestic work."
+      "confidence": "medium",
+      "note": "Both a Permit to Work (to the minor) and a Permit to Employ (to the employer) are required unless the minor has graduated from high school or holds an equivalent. Permits may set tighter hours than the statute and can be revoked by the school or the Labor Commissioner. Not required for self-employment, newspaper carriers, casual work in private homes, or parent's domestic work. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "personalCareNote": "Under-16s may not manufacture or use dangerous dyes, gases or acids (DLSE summary chart; underlying section not read); whether hair dyes and relaxers count is unsettled, so keep 14-15-year-olds away from chemical services. Performing cosmetology or barbering services also requires a Board of Barbering and Cosmetology license or registered apprenticeship.",
     "bands": [
@@ -535,8 +535,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.dir.ca.gov/dlse/minorssummarycharts.pdf"
           }
         ],
-        "confidence": "high",
-        "note": "May be employed only on non-school days (maxHours.schoolDay 0 = never on a school day, before, during or after school). School-year maximums are not stated in statute but may not exceed 8/40 or the permit (schoolWeek encoded 40). Not eligible for Work Experience Education. Meal break is the general Lab. Code § 512 / IWC Wage Order rule (more than 5 hours), not minor-specific. Federal FLSA bars 12-13 from most non-agricultural employment."
+        "confidence": "medium",
+        "note": "May be employed only on non-school days (maxHours.schoolDay 0 = never on a school day, before, during or after school). School-year maximums are not stated in statute but may not exceed 8/40 or the permit (schoolWeek encoded 40). Not eligible for Work Experience Education. Meal break is the general Lab. Code § 512 / IWC Wage Order rule (more than 5 hours), not minor-specific. Federal FLSA bars 12-13 from most non-agricultural employment. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 14,
@@ -578,8 +578,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.dir.ca.gov/dlse/minorssummarycharts.pdf"
           }
         ],
-        "confidence": "high",
-        "note": "'Schoolday' = any day the minor is required to attend school for 240 minutes or more (Lab. Code § 1391(b)). 'While school is in session' follows the county public-school calendar (DLSE). Must have completed 7th grade to work while school is in session. Work Experience Education enrollees may work up to 23 h/week, partly during school hours. High-school graduates may work adult hours. Meal break is the general Lab. Code § 512 rule (30 min for work periods over 5 hours; waivable by mutual consent if the day is no more than 6 hours), not minor-specific. California also requires one day's rest in seven for all employees (Lab. Code §§ 551-552), so effectively max 6 days/week (accumulable within a month)."
+        "confidence": "medium",
+        "note": "'Schoolday' = any day the minor is required to attend school for 240 minutes or more (Lab. Code § 1391(b)). 'While school is in session' follows the county public-school calendar (DLSE). Must have completed 7th grade to work while school is in session. Work Experience Education enrollees may work up to 23 h/week, partly during school hours. High-school graduates may work adult hours. Meal break is the general Lab. Code § 512 rule (30 min for work periods over 5 hours; waivable by mutual consent if the day is no more than 6 hours), not minor-specific. California also requires one day's rest in seven for all employees (Lab. Code §§ 551-552), so effectively max 6 days/week (accumulable within a month). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -616,8 +616,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.dir.ca.gov/dlse/minorssummarycharts.pdf"
           }
         ],
-        "confidence": "high",
-        "note": "4 hours on any schoolday, but 8 hours on a non-schoolday OR on any day preceding a non-schoolday (so a Friday may be 8; schoolDay 4 is stricter for Fridays). 48 h/week whether or not school is in session. Work may run until 12:30 a.m. ('24:30') on an evening preceding a non-schoolday. WEE students and personal attendants may exceed 4 h on a schoolday (never more than 8), and WEE students, with permission, may work until 12:30 a.m. on any day (§ 1391.1). Work during school hours is governed by compulsory-attendance law, not a child-labor hours rule. Meal break is the general § 512 rule. One day's rest in seven applies to all employees."
+        "confidence": "medium",
+        "note": "4 hours on any schoolday, but 8 hours on a non-schoolday OR on any day preceding a non-schoolday (so a Friday may be 8; schoolDay 4 is stricter for Fridays). 48 h/week whether or not school is in session. Work may run until 12:30 a.m. ('24:30') on an evening preceding a non-schoolday. WEE students and personal attendants may exceed 4 h on a schoolday (never more than 8), and WEE students, with permission, may work until 12:30 a.m. on any day (§ 1391.1). Work during school hours is governed by compulsory-attendance law, not a child-labor hours rule. Meal break is the general § 512 rule. One day's rest in seven applies to all employees. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       }
     ]
   },
@@ -628,8 +628,8 @@ const JURISDICTIONS = {
       "age": 14,
       "citation": "Colo. Rev. Stat. § 8-12-105(1)",
       "sourceUrl": "https://codes.findlaw.com/co/title-8-labor-and-industry/co-rev-st-sect-8-12-105/",
-      "confidence": "high",
-      "note": "Minors under 14 may work only in the duties listed in C.R.S. §§ 8-12-104, -106, -107 (from age 9: handbills, shoeshining, lawn/walk work without power equipment, caddying; from 12: babysitting, periodical and door-to-door sales, non-hazardous agriculture; any age: actors/models/performers, newspaper carriers). The Act's 'minor' excludes anyone under 18 with a high-school diploma or GED (C.R.S. § 8-12-103(5))."
+      "confidence": "medium",
+      "note": "Minors under 14 may work only in the duties listed in C.R.S. §§ 8-12-104, -106, -107 (from age 9: handbills, shoeshining, lawn/walk work without power equipment, caddying; from 12: babysitting, periodical and door-to-door sales, non-hazardous agriculture; any age: actors/models/performers, newspaper carriers). The Act's 'minor' excludes anyone under 18 with a high-school diploma or GED (C.R.S. § 8-12-103(5)). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "workPermit": null,
     "personalCareNote": null,
@@ -669,8 +669,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://cdle.colorado.gov/sites/cdle/files/info_%2322_employment_of_minors_in_colorado_05.19.25.pdf"
           }
         ],
-        "confidence": "high",
-        "note": "STATE-only limits (CDLE INFO #22 also prints the federal 3 h/18 h/7 a.m.-7 p.m. rules, which are FLSA, not Colorado). After school hours on a school day: at most 6 hours, unless the next day is not a school day (6 is kept as the stricter value). No work 9:30 p.m.-5:00 a.m. when the next day is a school day; Colorado sets NO time-of-day limit on a night before a non-school day (latestEndBeforeNonSchoolDay null = no state rule). Any minor: max 8 hours in any 24-hour period and 40 h/week (the Division may authorize more in an emergency). No work during school hours except with a school release permit under § 8-12-113 (up to 30 days, parent approval). Meal break is Colorado's general COMPS Order rule (30 minutes when a shift exceeds 5 hours, plus 10-minute rest per 4 hours), not minor-specific."
+        "confidence": "medium",
+        "note": "STATE-only limits (CDLE INFO #22 also prints the federal 3 h/18 h/7 a.m.-7 p.m. rules, which are FLSA, not Colorado). After school hours on a school day: at most 6 hours, unless the next day is not a school day (6 is kept as the stricter value). No work 9:30 p.m.-5:00 a.m. when the next day is a school day; Colorado sets NO time-of-day limit on a night before a non-school day (latestEndBeforeNonSchoolDay null = no state rule). Any minor: max 8 hours in any 24-hour period and 40 h/week (the Division may authorize more in an emergency). No work during school hours except with a school release permit under § 8-12-113 (up to 30 days, parent approval). Meal break is Colorado's general COMPS Order rule (30 minutes when a shift exceeds 5 hours, plus 10-minute rest per 4 hours), not minor-specific. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -707,8 +707,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://cdle.colorado.gov/sites/cdle/files/info_%2322_employment_of_minors_in_colorado_05.19.25.pdf"
           }
         ],
-        "confidence": "high",
-        "note": "8 hours in any 24-hour period (not per calendar day) and 40 hours per week; CDLE: 'Colorado has a stricter age minimum (18) for weeks over 40 hours, or days over 8'. No time-of-day limits. Does not apply to 16–17-year-olds with a high-school diploma or GED (not 'minors' under the Act). Meal break is the general COMPS rule."
+        "confidence": "medium",
+        "note": "8 hours in any 24-hour period (not per calendar day) and 40 hours per week; CDLE: 'Colorado has a stricter age minimum (18) for weeks over 40 hours, or days over 8'. No time-of-day limits. Does not apply to 16–17-year-olds with a high-school diploma or GED (not 'minors' under the Act). Meal break is the general COMPS rule. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       }
     ]
   },
@@ -997,7 +997,7 @@ const JURISDICTIONS = {
     "effectiveFrom": null,
     "minimumAge": {
       "age": 14,
-      "citation": "Fla. Stat. § 450.021(2)",
+      "citation": "Fla. Stat. § 450.021(3)",
       "sourceUrl": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0400-0499/0450/Sections/0450.021.html",
       "confidence": "high",
       "note": "\"No person 13 years of age or younger shall be employed...\". Exceptions: newspaper sales from 11, entertainment, legislative pages, some domestic/farm work."
@@ -1180,8 +1180,8 @@ const JURISDICTIONS = {
       "issuer": "state labor department (DLIR): certificate of employment (14-15, form CL-1, per employer/job); certificate of age (16-17, online)",
       "citation": "Haw. Rev. Stat. § 390-2(b), (c)",
       "sourceUrl": "https://labor.hawaii.gov/wsd/child-labor/",
-      "confidence": "high",
-      "note": "14-15: employer must obtain a DLIR certificate of employment before the minor starts; new employer or occupation needs a new one. 16-17: employer records the number of a DLIR certificate of age (applied for online, no job offer needed)."
+      "confidence": "medium",
+      "note": "14-15: employer must obtain a DLIR certificate of employment before the minor starts; new employer or occupation needs a new one. 16-17: employer records the number of a DLIR certificate of age (applied for online, no job offer needed). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "personalCareNote": null,
     "bands": [
@@ -1612,8 +1612,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.in.gov/dol/youth-employment/youth-employment-home/changes-to-youth-employment-laws/"
           }
         ],
-        "confidence": "high",
-        "note": "Effective 2025-01-01, 16-17-year-olds 'may now work the same hours and days as an adult'; the old 9 h/day, 30-40 h/week, 10pm/11pm school-night limits and the parental-permission form are repealed. No break required."
+        "confidence": "medium",
+        "note": "Effective 2025-01-01, 16-17-year-olds 'may now work the same hours and days as an adult'; the old 9 h/day, 30-40 h/week, 10pm/11pm school-night limits and the parental-permission form are repealed. No break required. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       }
     ]
   },
@@ -2367,8 +2367,8 @@ const JURISDICTIONS = {
         "minAge": 16,
         "maxAge": 17,
         "maxHours": {
-          "schoolDay": 10,
-          "nonSchoolDay": 10,
+          "schoolDay": 8,
+          "nonSchoolDay": 8,
           "schoolWeek": 24,
           "nonSchoolWeek": 48,
           "schoolDayIncludingSchool": null
@@ -2378,9 +2378,12 @@ const JURISDICTIONS = {
           "earliestStartSchoolDay": "06:00",
           "earliestStartNonSchoolDay": "06:00",
           "latestEndBeforeSchoolDay": "22:30",
-          "latestEndBeforeNonSchoolDay": "23:30",
+          "latestEndBeforeNonSchoolDay": "22:30",
           "summer": null,
-          "vacation": null
+          "vacation": {
+            "earliestStart": null,
+            "latestEnd": "23:30"
+          }
         },
         "noWorkDuringSchoolHours": false,
         "mealBreak": {
@@ -2399,7 +2402,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "Also capped at an AVERAGE of 8 hours/day over a week (so 6 days x 10 h is not allowed; 48 h/week max). The 24 h/week cap applies only to a student while school is in session. The 23:30 end applies to a student only on FRIDAYS and SATURDAYS, during school vacation periods, or when not regularly enrolled - not on every night before a non-school day (e.g. not a Sunday before a holiday Monday, where 22:30 applies; the schema cannot express that, so latestEndBeforeNonSchoolDay 23:30 is looser on such holiday eves). A minor 16+ not enrolled in school may work to 23:30 any night. Deviations may be granted by the department (MCL 409.120)."
+        "note": "Also capped at an AVERAGE of 8 hours/day over a week (so 6 days x 10 h is not allowed; 48 h/week max). The 24 h/week cap applies only to a student while school is in session. The 23:30 end applies to a student only on Fridays and Saturdays, during school vacation periods, or when not regularly enrolled; the schema cannot name Fridays and Saturdays, so 22:30 is encoded on every night outside a vacation (stricter on Fridays and Saturdays), and 23:30 during a vacation. A minor 16+ not enrolled in school may work to 23:30 any night. Deviations may be granted by the department (MCL 409.120). The statute allows 10 hours in a day but no more than a weekly average of 8 hours a day; because an average over the days worked cannot be held by a per-day cap, 8 hours a day is encoded (stricter)."
       }
     ]
   },
@@ -2757,8 +2760,8 @@ const JURISDICTIONS = {
       "issuer": "NC Department of Labor, online (employer initiates with the youth's YEID; youth, parent and employer e-sign)",
       "citation": "N.C. Gen. Stat. § 95-25.5(a)",
       "sourceUrl": "https://www.labor.nc.gov/workplace-rights/youth-employment-rules/apply-youth-employment-certificate",
-      "confidence": "high",
-      "note": "A Youth Employment Certificate is required for everyone under 18, and it still applies to employers covered by the FLSA (§ 95-25.5(k)). The youth, parent/guardian and employer must all sign before the first day of work. NCDOL will not issue a certificate for employment that would violate the FLSA child-labor rules."
+      "confidence": "medium",
+      "note": "A Youth Employment Certificate is required for everyone under 18, and it still applies to employers covered by the FLSA (§ 95-25.5(k)). The youth, parent/guardian and employer must all sign before the first day of work. NCDOL will not issue a certificate for employment that would violate the FLSA child-labor rules. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "personalCareNote": null,
     "bands": [
@@ -3097,16 +3100,16 @@ const JURISDICTIONS = {
       "age": 14,
       "citation": "N.J.S.A. 34:2-21.2; NJDOL Child Labor Law Abstract (MW-129)",
       "sourceUrl": "https://www.nj.gov/labor/myworkrights/worker-protections/workers_under_18/",
-      "confidence": "high",
-      "note": "The minimum age for general employment (retail, restaurant, hotel, office) is 14. Exceptions: 11 for newspaper delivery, and 12 for agriculture and theatrical work. Under 16 may work only outside school hours."
+      "confidence": "medium",
+      "note": "The minimum age for general employment (retail, restaurant, hotel, office) is 14. Exceptions: 11 for newspaper delivery, and 12 for agriculture and theatrical work. Under 16 may work only outside school hours. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "workPermit": {
       "requiredUnder": 18,
       "issuer": "NJ Department of Labor and Workforce Development, online (MyWorkingPapers.nj.gov)",
       "citation": "N.J.S.A. 34:2-21.7 et seq. (as amended by P.L.2022); NJDOL Working Papers FAQ",
       "sourceUrl": "https://www.nj.gov/labor/youngworkers/find-a-job/working-papers/faqs.shtml",
-      "confidence": "high",
-      "note": "Working papers are required for every minor under 18 and for each job. Since 2023-06-01 they are issued online by NJDOL, not by schools. The process: the minor has a job offer and the employer's 8-digit registration code, then a parent or caregiver gives permission and proof of age. The 2023 MW-129 poster still says to apply to the school district, which is stale. Exception: no papers are needed for the first 14 days of school-vacation work at age 15+ in food service, restaurant, retail or seasonal amusement (MW-129 note 2)."
+      "confidence": "medium",
+      "note": "Working papers are required for every minor under 18 and for each job. Since 2023-06-01 they are issued online by NJDOL, not by schools. The process: the minor has a job offer and the employer's 8-digit registration code, then a parent or caregiver gives permission and proof of age. The 2023 MW-129 poster still says to apply to the school district, which is stale. Exception: no papers are needed for the first 14 days of school-vacation work at age 15+ in food service, restaurant, retail or seasonal amusement (MW-129 note 2). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "personalCareNote": "New Jersey bars all minors (under 18) from handling dangerous or poisonous acids or dyes and corrosive, carcinogenic or toxic substances (N.J.A.C. 12:58). This plausibly reaches hair dye, relaxers and perms, but no New Jersey source names cosmetology, so it is unconfirmed.",
     "bands": [
@@ -3145,8 +3148,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.nj.gov/labor/wageandhour/assets/PDFs/Forms%20and%20Publications/MW-129%20(2-23)%20Child%20Labor%20Law%20Abstract%20Poster%20BW%20.pdf"
           }
         ],
-        "confidence": "high",
-        "note": "The 9 p.m. summer end (from the minor's own last school day through Labor Day) requires written permission from a parent or guardian; as a conditional extension it is not encoded (summer and vacation null), so 19:00 applies all year - stricter than the law for a minor with that permission. The meal break is 30 minutes after 6 consecutive hours; breaks under 30 minutes do not interrupt continuous work. Under 16 has an overall 8 hours/day and 40 hours/week cap. School-sponsored cooperative education has separate limits (5 hours at the site, 8 combined)."
+        "confidence": "medium",
+        "note": "The 9 p.m. summer end (from the minor's own last school day through Labor Day) requires written permission from a parent or guardian; as a conditional extension it is not encoded (summer and vacation null), so 19:00 applies all year - stricter than the law for a minor with that permission. The meal break is 30 minutes after 6 consecutive hours; breaks under 30 minutes do not interrupt continuous work. Under 16 has an overall 8 hours/day and 40 hours/week cap. School-sponsored cooperative education has separate limits (5 hours at the site, 8 combined). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -3372,8 +3375,8 @@ const JURISDICTIONS = {
       "issuer": "school district (the minor's school guidance office; non-students apply at the nearest school)",
       "citation": "N.Y. Lab. Law § 131; N.Y. Educ. Law art. 65 pt. 4; NYSDOL Working Papers",
       "sourceUrl": "https://dol.ny.gov/working-papers",
-      "confidence": "high",
-      "note": "Certificates by age: AT-18 for 14–15, AT-19 for 16–17 in school, and AT-20 (full-time) for 16–17 out of school. Exempt from the requirement: home farm work, caddying, babysitting, home chores, casual non-power work at a nonprofit, and some college employment. NYSDOL mentions a digital working-papers process arriving in 2027."
+      "confidence": "medium",
+      "note": "Certificates by age: AT-18 for 14–15, AT-19 for 16–17 in school, and AT-20 (full-time) for 16–17 out of school. Exempt from the requirement: home farm work, caddying, babysitting, home chores, casual non-power work at a nonprofit, and some college employment. NYSDOL mentions a digital working-papers process arriving in 2027. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "personalCareNote": null,
     "bands": [
@@ -3402,7 +3405,11 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": null,
+        "mealBreak": {
+          "afterHours": 6,
+          "minutes": 30,
+          "minorSpecific": false
+        },
         "citations": [
           {
             "citation": "N.Y. Lab. Law § 142",
@@ -3411,10 +3418,14 @@ const JURISDICTIONS = {
           {
             "citation": "NYSDOL, Hours of Work for Minors",
             "sourceUrl": "https://dol.ny.gov/hours-work-minors"
+          },
+          {
+            "citation": "N.Y. Lab. Law § 162",
+            "sourceUrl": "https://www.nysenate.gov/legislation/laws/LAB/162"
           }
         ],
         "confidence": "high",
-        "note": "A 'school week' (18-hour cap) is any week school is in session; a non-school week is one in which school is closed the entire calendar week. On a Saturday or other non-school day within a school week the cap is 8 hours. 7 a.m.-7 p.m. every day, to 9 p.m. June 21-Labor Day. Approved supervised work-study students may work 23 hours/week. Junior counselors at children's camps (June-August) are exempt from the time window. The ban on school-hours work comes from § 131, which allows work only when the minor is not required to attend school. NY's general meal-period rule (Lab. Law § 162) covers all employees and is not minor-specific, so mealBreak is null."
+        "note": "A 'school week' (18-hour cap) is any week school is in session; a non-school week is one in which school is closed the entire calendar week. On a Saturday or other non-school day within a school week the cap is 8 hours. 7 a.m.-7 p.m. every day, to 9 p.m. June 21-Labor Day. Approved supervised work-study students may work 23 hours/week. Junior counselors at children's camps (June-August) are exempt from the time window. The ban on school-hours work comes from § 131, which allows work only when the minor is not required to attend school. Meal break is New York's general rule (Lab. Law § 162): a shift of more than 6 hours gets at least 30 minutes. A shift starting between 1 p.m. and 6 a.m. needs 45 minutes, and a shift from before 11 a.m. to after 7 p.m. an extra 20; those are not encoded."
       },
       {
         "minAge": 16,
@@ -3436,7 +3447,11 @@ const JURISDICTIONS = {
           "vacation": null
         },
         "noWorkDuringSchoolHours": true,
-        "mealBreak": null,
+        "mealBreak": {
+          "afterHours": 6,
+          "minutes": 30,
+          "minorSpecific": false
+        },
         "citations": [
           {
             "citation": "N.Y. Lab. Law § 143",
@@ -3445,10 +3460,14 @@ const JURISDICTIONS = {
           {
             "citation": "NYSDOL, Hours of Work for Minors",
             "sourceUrl": "https://dol.ny.gov/hours-work-minors"
+          },
+          {
+            "citation": "N.Y. Lab. Law § 162",
+            "sourceUrl": "https://www.nysenate.gov/legislation/laws/LAB/162"
           }
         ],
         "confidence": "high",
-        "note": "The school-week limits (4 hours on a day before a school day, 8 on Friday, Saturday, Sunday and holidays, 28 a week, 6 days, 6 a.m.-10 p.m.) apply only to minors attending day school while school is in session. maxHours.schoolDay 4 really applies to days that PRECEDE a school day (Mon-Thu plus Sunday); Friday allows 8. Later work during school weeks needs written parental consent: until midnight on a night before a non-school day, or on a school night if the school also certifies satisfactory academic standing - not encoded (22:00 every night). In vacation (school not in session), or for minors not attending school, the limits are 8 hours/day, 48/week, 6 days, and no work from midnight to 6 a.m.; the 22:00 end is therefore stricter than the law during vacations. In a holiday week, one 10-hour day and four 9-hour days are allowed within the 48. Co-op education students may work 6 hours on a day before a school day."
+        "note": "The school-week limits (4 hours on a day before a school day, 8 on Friday, Saturday, Sunday and holidays, 28 a week, 6 days, 6 a.m.-10 p.m.) apply only to minors attending day school while school is in session. maxHours.schoolDay 4 really applies to days that PRECEDE a school day (Mon-Thu plus Sunday); Friday allows 8. Later work during school weeks needs written parental consent: until midnight on a night before a non-school day, or on a school night if the school also certifies satisfactory academic standing - not encoded (22:00 every night). In vacation (school not in session), or for minors not attending school, the limits are 8 hours/day, 48/week, 6 days, and no work from midnight to 6 a.m.; the 22:00 end is therefore stricter than the law during vacations. In a holiday week, one 10-hour day and four 9-hour days are allowed within the 48. Co-op education students may work 6 hours on a day before a school day. Meal break is New York's general rule (Lab. Law § 162): a shift of more than 6 hours gets at least 30 minutes. A shift starting between 1 p.m. and 6 a.m. needs 45 minutes, and a shift from before 11 a.m. to after 7 p.m. an extra 20; those are not encoded."
       }
     ]
   },
@@ -3554,8 +3573,8 @@ const JURISDICTIONS = {
       "age": 14,
       "citation": "Okla. Stat. tit. 40, § 71 et seq.; Oklahoma Department of Labor Child Labor Unit FAQ",
       "sourceUrl": "https://oklahoma.gov/labor/workplace-rights/child-labor/faqs---child-labor-unit.html",
-      "confidence": "high",
-      "note": "Exempt: farm work, work for a parent or an entity in which a parent holds an equity interest, and newspaper sale/delivery."
+      "confidence": "medium",
+      "note": "Exempt: farm work, work for a parent or an entity in which a parent holds an equity interest, and newspaper sale/delivery. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "workPermit": {
       "requiredUnder": 16,
@@ -3603,8 +3622,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://oklahoma.gov/labor/workplace-rights/child-labor/faqs---child-labor-unit.html"
           }
         ],
-        "confidence": "high",
-        "note": "ODOL says the 9 p.m. end on days followed by a non-school day applies year-round only where the employer is NOT covered by the federal FLSA (federal 7 p.m. is stricter otherwise). Also a 1-hour cumulative rest per 8 consecutive hours. No overtime for under-16. ODOL FAQ does not address work during school hours; statute text not opened."
+        "confidence": "medium",
+        "note": "ODOL says the 9 p.m. end on days followed by a non-school day applies year-round only where the employer is NOT covered by the federal FLSA (federal 7 p.m. is stricter otherwise). Also a 1-hour cumulative rest per 8 consecutive hours. No overtime for under-16. ODOL FAQ does not address work during school hours; statute text not opened. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -3633,8 +3652,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://oklahoma.gov/labor/workplace-rights/child-labor/faqs---child-labor-unit.html"
           }
         ],
-        "confidence": "high",
-        "note": "ODOL: 'There are no restrictions on the hours or times once the minor reaches 16 years of age', and no break requirements."
+        "confidence": "medium",
+        "note": "ODOL: 'There are no restrictions on the hours or times once the minor reaches 16 years of age', and no break requirements. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       }
     ]
   },
@@ -3645,16 +3664,16 @@ const JURISDICTIONS = {
       "age": 14,
       "citation": "ORS 653.305 et seq.; OAR ch. 839, div. 21; BOLI 'Minor Workers' page",
       "sourceUrl": "https://www.oregon.gov/boli/employers/pages/minor-workers.aspx",
-      "confidence": "high",
-      "note": "BOLI may approve younger workers in specific industries (agriculture, entertainment); under-14 requires an employment permit."
+      "confidence": "medium",
+      "note": "BOLI may approve younger workers in specific industries (agriculture, entertainment); under-14 requires an employment permit. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "workPermit": {
       "requiredUnder": 18,
       "issuer": "BOLI Child Labor Unit — the EMPLOYER's annual validated employment certificate (not a per-minor permit)",
       "citation": "ORS 653.307; OAR 839-021-0220; BOLI 'Minor Workers' page",
       "sourceUrl": "https://www.oregon.gov/boli/employers/pages/minor-workers.aspx",
-      "confidence": "high",
-      "note": "Oregon is unusual: 'All employers must have a certificate to employ minors under 18', obtained annually by the employer from BOLI and posted at the worksite. Minors 14-17 do NOT get individual work permits. A consumer modeling a per-minor permit should treat this as an employer-level requirement."
+      "confidence": "medium",
+      "note": "Oregon is unusual: 'All employers must have a certificate to employ minors under 18', obtained annually by the employer from BOLI and posted at the worksite. Minors 14-17 do NOT get individual work permits. A consumer modeling a per-minor permit should treat this as an employer-level requirement. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "personalCareNote": null,
     "bands": [
@@ -3698,8 +3717,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://oregon.public.law/rules/oar_839-021-0070"
           }
         ],
-        "confidence": "high",
-        "note": "Meal period: 30 min for any work period of 6+ hours; the adult meal-period exceptions do not apply to 14-15. Also a paid 15-minute rest break per 4-hour segment (or major portion) for all minors. Exceptions for student-learner and school-supervised work experience programs."
+        "confidence": "medium",
+        "note": "Meal period: 30 min for any work period of 6+ hours; the adult meal-period exceptions do not apply to 14-15. Also a paid 15-minute rest break per 4-hour segment (or major portion) for all minors. Exceptions for student-learner and school-supervised work experience programs. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -3736,8 +3755,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.oregon.gov/boli/employers/pages/minor-workers.aspx"
           }
         ],
-        "confidence": "high",
-        "note": "44 hours/week cap regardless of school; more requires a BOLI Special Emergency Overtime Permit. No daily or time-of-day limit (except messenger/delivery work 10 p.m.-5 a.m.). Paid 15-minute rest break per 4-hour segment."
+        "confidence": "medium",
+        "note": "44 hours/week cap regardless of school; more requires a BOLI Special Emergency Overtime Permit. No daily or time-of-day limit (except messenger/delivery work 10 p.m.-5 a.m.). Paid 15-minute rest break per 4-hour segment. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       }
     ]
   },
@@ -3820,7 +3839,7 @@ const JURISDICTIONS = {
             "latestEnd": "25:00"
           }
         },
-        "noWorkDuringSchoolHours": false,
+        "noWorkDuringSchoolHours": true,
         "mealBreak": {
           "afterHours": 5,
           "minutes": 30,
@@ -3837,7 +3856,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "While school is in session: 6 a.m.-midnight ('24:00'), 8 h/day ('in a single day', so every day of a school week, weekends included), 28 h per regular school week - L&I reads this as 28 Mon-Fri plus up to 8 hours each on Sat/Sun (28 kept as stricter). During a school vacation period: until 1 a.m. ('25:00', encoded as `vacation`), 10 h/day, 48 h/week with hours over 44 voluntary. Because the schema's nonSchoolDay cap cannot tell a school-week weekend from a vacation day, it is encoded as 8 (stricter; vacation days really allow 10). Summer-school enrollees stay on school-session limits. These limits do NOT apply to high-school graduates or those exempt from compulsory attendance."
+        "note": "While school is in session: 6 a.m.-midnight ('24:00'), 8 h/day ('in a single day', so every day of a school week, weekends included), 28 h per regular school week - L&I reads this as 28 Mon-Fri plus up to 8 hours each on Sat/Sun (28 kept as stricter). During a school vacation period: until 1 a.m. ('25:00', encoded as `vacation`), 10 h/day, 48 h/week with hours over 44 voluntary. Because the schema's nonSchoolDay cap cannot tell a school-week weekend from a vacation day, it is encoded as 8 (stricter; vacation days really allow 10). Summer-school enrollees stay on school-session limits. These limits do NOT apply to high-school graduates or those exempt from compulsory attendance. The Act defines hours of employment as hours outside the school hours set by the school district, so work during school hours is barred (encoded)."
       }
     ]
   },
@@ -3957,8 +3976,8 @@ const JURISDICTIONS = {
       "age": 14,
       "citation": "S.C. Code § 41-13-20 and LLR child labor regulations (summary)",
       "sourceUrl": "https://llr.sc.gov/wage/cll.aspx",
-      "confidence": "high",
-      "note": "LLR: employment under 14 is generally 'oppressive child labor'. Exemptions: performers, 12-13 in some farm work, any age in a business 100% owned and operated by a parent, newspaper delivery."
+      "confidence": "medium",
+      "note": "LLR: employment under 14 is generally 'oppressive child labor'. Exemptions: performers, 12-13 in some farm work, any age in a business 100% owned and operated by a parent, newspaper delivery. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
     },
     "workPermit": null,
     "personalCareNote": null,
@@ -3993,8 +4012,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://llr.sc.gov/wage/cll.aspx"
           }
         ],
-        "confidence": "high",
-        "note": "LLR frames limits by 'school sessions' vs 'non-school sessions (such as summer vacations)': during non-school sessions 8 h/day, 40 h/week, 7 a.m.-9 p.m. No fixed summer dates are given, so the 9 p.m. end is encoded as `vacation`. The 3 h/day cap is per day during a school session (LLR does not distinguish a Saturday within a school week). No state break rule found on the LLR page (a secondary claim of a 30-minute break was not confirmed)."
+        "confidence": "medium",
+        "note": "LLR frames limits by 'school sessions' vs 'non-school sessions (such as summer vacations)': during non-school sessions 8 h/day, 40 h/week, 7 a.m.-9 p.m. No fixed summer dates are given, so the 9 p.m. end is encoded as `vacation`. The 3 h/day cap is per day during a school session (LLR does not distinguish a Saturday within a school week). No state break rule found on the LLR page (a secondary claim of a 30-minute break was not confirmed). Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -4023,8 +4042,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://llr.sc.gov/wage/cll.aspx"
           }
         ],
-        "confidence": "high",
-        "note": "Exempt from hour and scheduling restrictions; FLSA hazardous orders still apply."
+        "confidence": "medium",
+        "note": "Exempt from hour and scheduling restrictions; FLSA hazardous orders still apply. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       }
     ]
   },
@@ -4182,8 +4201,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.tn.gov/workforce/employees/labor-laws/labor-laws-redirect/child-labor.html"
           }
         ],
-        "confidence": "high",
-        "note": "TDLWD frames limits by 'while school is in session' (3 h/day, 18 h/week, 7 a.m.-7 p.m.) vs 'while school is not in session' (8 h/day, 40 h/week, 6 a.m.-9 p.m.). Because the state ties the 6 a.m.-9 p.m. window to periods when school is not in session (no dates), it is encoded as `vacation`. 'Required to attend class' hours are off-limits. Break: 30-minute unpaid break/meal period if scheduled 6 consecutive hours, not scheduled during or before the first hour; the adult break waiver does not apply to under-18s."
+        "confidence": "medium",
+        "note": "TDLWD frames limits by 'while school is in session' (3 h/day, 18 h/week, 7 a.m.-7 p.m.) vs 'while school is not in session' (8 h/day, 40 h/week, 6 a.m.-9 p.m.). Because the state ties the 6 a.m.-9 p.m. window to periods when school is not in session (no dates), it is encoded as `vacation`. 'Required to attend class' hours are off-limits. Break: 30-minute unpaid break/meal period if scheduled 6 consecutive hours, not scheduled during or before the first hour; the adult break waiver does not apply to under-18s. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       },
       {
         "minAge": 16,
@@ -4216,8 +4235,8 @@ const JURISDICTIONS = {
             "sourceUrl": "https://www.tn.gov/workforce/employees/labor-laws/labor-laws-redirect/child-labor.html"
           }
         ],
-        "confidence": "high",
-        "note": "10 p.m.-6 a.m. ban applies only Sunday through Thursday nights preceding a school day (so the 06:00 start binds only school-day mornings). With a signed Parental Consent Form kept in the personnel file, the minor may work until midnight on no more than 3 nights per week (Sun-Thu) - not encoded (stricter). Not during hours the minor is required to attend class (waived for church-related-school and consenting home-schooled students with a director's letter). No daily/weekly hour caps. Same 30-minute break rule as 14-15."
+        "confidence": "medium",
+        "note": "10 p.m.-6 a.m. ban applies only Sunday through Thursday nights preceding a school day (so the 06:00 start binds only school-day mornings). With a signed Parental Consent Form kept in the personnel file, the minor may work until midnight on no more than 3 nights per week (Sun-Thu) - not encoded (stricter). Not during hours the minor is required to attend class (waived for church-related-school and consenting home-schooled students with a director's letter). No daily/weekly hour caps. Same 30-minute break rule as 14-15. Confidence medium: the linked source is an agency summary or an unofficial copy of the text, not the official code."
       }
     ]
   },
@@ -4664,7 +4683,7 @@ const JURISDICTIONS = {
           "latestEndBeforeNonSchoolDay": "24:00",
           "summer": null,
           "vacation": {
-            "earliestStart": "05:00",
+            "earliestStart": null,
             "latestEnd": "24:00"
           }
         },
@@ -4685,7 +4704,7 @@ const JURISDICTIONS = {
           }
         ],
         "confidence": "high",
-        "note": "School weeks: max 4 h on a school day preceding another school day, otherwise 8 h (4 kept as stricter); 20 h/week; 6 days; 7 a.m.-10 p.m. on days preceding a school day; until midnight ('24:00') on Fridays, Saturdays and days before a school holiday/vacation; not during school hours. Non-school weeks: 8 h/day, 48 h/week, 6 days, 5 a.m.-midnight (encoded as `vacation`). Past 8 p.m. in service occupations a responsible adult must be on the premises. Breaks: 30-minute uninterrupted meal break no later than after 5 consecutive hours; paid 10-minute rest break when working 4+ hours and no more than 3 hours without a rest break. Exceptions: minors with a certificate of educational competence, in a bona fide college program, in a state-approved CTE/worksite-learning program, or who are a parent may work non-school-week hours year-round (§ 101(4)); school-hours work is allowed for minors at an alternative/private school (outside their own school's hours), home-schooled, released for worksite learning, or excused by the superintendent (§ 101(3)). Special variances can raise school-week hours (WAC 296-125-161)."
+        "note": "School weeks: max 4 h on a school day preceding another school day, otherwise 8 h (4 kept as stricter); 20 h/week; 6 days; 7 a.m.-10 p.m. on days preceding a school day; until midnight ('24:00') on Fridays, Saturdays and days before a school holiday/vacation; not during school hours. Non-school weeks: 8 h/day, 48 h/week, 6 days, 5 a.m.-midnight (encoded as `vacation`). Past 8 p.m. in service occupations a responsible adult must be on the premises. Breaks: 30-minute uninterrupted meal break no later than after 5 consecutive hours; paid 10-minute rest break when working 4+ hours and no more than 3 hours without a rest break. Exceptions: minors with a certificate of educational competence, in a bona fide college program, in a state-approved CTE/worksite-learning program, or who are a parent may work non-school-week hours year-round (§ 101(4)); school-hours work is allowed for minors at an alternative/private school (outside their own school's hours), home-schooled, released for worksite learning, or excused by the superintendent (§ 101(3)). Special variances can raise school-week hours (WAC 296-125-161). The 5 a.m. start is allowed only in a non-school week; because a vacation day can fall inside a school week, 07:00 is kept on vacation days (stricter)."
       }
     ]
   },

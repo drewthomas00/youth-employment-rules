@@ -120,3 +120,34 @@ test('the tables are frozen', () => {
   require('..');
   assert.ok(Object.isFrozen(JURISDICTIONS['US-CA'].bands[0].maxHours));
 });
+
+// Review fixes, 2026-10-11: each case passed an unlawful shift before.
+
+test('Michigan 16-17: 11:30 p.m. only on Fridays, Saturdays and in a vacation, so a holiday eve ends at 10:30', () => {
+  const thursday = run('US-MI', SIXTEEN, [{ date: '2026-10-15', start: '18:00', end: '23:00' }], { vacationDays: ['2026-10-16'] });
+  assert.deepEqual(rules(thursday), ['ends_too_late']);
+  assert.equal(thursday.violations[0].limit, '22:30');
+  const vacation = run('US-MI', SIXTEEN, [{ date: '2026-10-16', start: '18:00', end: '23:30', breakMinutes: 30 }], { vacationDays: ['2026-10-16', '2026-10-17'] });
+  assert.deepEqual(rules(vacation), []);
+});
+
+test('Michigan 16-17: a weekly average of 8 hours a day is held as 8 hours a day', () => {
+  const r = run('US-MI', SIXTEEN, [{ date: SAT, start: '08:00', end: '17:30', breakMinutes: 30 }]);
+  assert.deepEqual(rules(r), ['max_hours_non_school_day']);
+  assert.equal(r.violations[0].jurisdiction, 'US-MI');
+});
+
+test('Pennsylvania 16-17: no work during school hours', () => {
+  const r = run('US-PA', SIXTEEN, [{ date: MON, start: '10:00', end: '14:00' }], { hasWorkPermit: true });
+  assert.deepEqual(rules(r), ['during_school_hours']);
+});
+
+test('Washington 16-17: the 5 a.m. start is for non-school weeks, not a vacation day in a school week', () => {
+  const r = run('US-WA', SIXTEEN, [{ date: MON, start: '05:30', end: '10:00' }], { vacationDays: [MON], hasWorkPermit: true });
+  assert.deepEqual(rules(r), ['starts_too_early']);
+});
+
+test('New York: the general meal period covers minors, 30 minutes for a shift over six hours', () => {
+  assert.deepEqual(rules(run('US-NY', SIXTEEN, [{ date: SAT, start: '09:00', end: '16:00' }], { hasWorkPermit: true })), ['meal_break']);
+  assert.deepEqual(rules(run('US-NY', SIXTEEN, [{ date: SAT, start: '09:00', end: '16:30', breakMinutes: 30 }], { hasWorkPermit: true })), []);
+});

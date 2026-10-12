@@ -16,7 +16,7 @@ Pure functions. No network, no runtime dependencies. TypeScript types included.
 npm install youth-employment-rules
 ```
 
-**Not legal advice.** The tables are for non-agricultural, non-hazardous work (retail, food service, personal services and the like). They are a strong first line of defence for a scheduling tool, not a substitute for the employer's own obligations.
+**Not legal advice, and not reviewed by a lawyer.** The tables are for non-agricultural, non-hazardous work (retail, food service, personal services and the like). They are a first line of defence for a scheduling tool, not a substitute for the employer's own obligations. See [Not legal advice](#not-legal-advice).
 
 ## Why this is harder than it looks
 
@@ -106,7 +106,8 @@ rulesFor('US-NY', { age: 16, on: '2026-10-12' }).maxHoursSchoolWeek;
 ## How the tables are encoded
 
 - `null` means the jurisdiction was checked and sets no limit there; federal law may still.
-- Where a statute's rule depends on something the shape cannot hold — a parent's written consent, a high-school diploma, an industry list, a weekday — the **stricter** reading is encoded and the band's `note` says so. A checker built on these tables will sometimes flag a lawful shift; it should never pass an unlawful one because of the encoding. Known cases include Michigan 14–15 (3 hours on every day of a school week), Pennsylvania 16–17 (8 hours on any day), New Jersey 16–17 (8/40 all year), New York 16–17 (no vacation midnight), and North Carolina 14–15 (whose hours bind only employers outside the FLSA).
+- Where a statute's rule depends on something the shape cannot hold — a parent's written consent, a high-school diploma, an industry list, a weekday — the **stricter** reading is encoded and the band's `note` says so. A checker built on these tables will sometimes flag a lawful shift; it should never pass an unlawful one because of the encoding. Known cases include Michigan 14–15 (3 hours on every day of a school week), Pennsylvania 16–17 (8 hours on any day), New Jersey 16–17 (8/40 all year), New York 16–17 (no vacation midnight), Michigan 16–17 (10:30 p.m. on Fridays and Saturdays outside a vacation, and 8 hours a day for the weekly average), Washington 16–17 (no 5 a.m. start on vacation days), and North Carolina 14–15 (whose hours bind only employers outside the FLSA).
+- Meal breaks: a minor-specific rule is encoded wherever a state has one. A state's general meal-period rule for all employees is encoded for California, Massachusetts and New York; other states' general rules are not all encoded, so check yours.
 - Connecticut's minimum age of 16 is its floor for mercantile and other named industries; the band notes say which work it does not reach.
 - Times past midnight are written on a 24-hour-plus clock: `'24:30'` is 12:30 a.m. the next morning.
 - Every entry has a `confidence`: **high** when the primary text (statute, regulation or official code site) was read; **medium** when only an official summary or a reputable copy of the statute could be reached.
@@ -120,20 +121,20 @@ As of 2026-10-11. "Permit" is the age below which a work permit or employment ce
 | US | 14 | — | 14–15, 16–17 | high |  |
 | US-AK | 14 | under 17 | 14–15, 16–17 | high |  |
 | US-AL | 14 | under 18 | 14–15, 16–17 | high |  |
-| US-AR | 14 | — | 14–15, 16, 17 | high, medium |  |
+| US-AR | 14 | — | 14–15, 16, 17 | medium |  |
 | US-AZ | — | — | 14–15, 16–17 | high |  |
-| US-CA | 12 | under 18 | 12–13, 14–15, 16–17 | high |  |
-| US-CO | 14 | — | 14–15, 16–17 | high |  |
+| US-CA | 12 | under 18 | 12–13, 14–15, 16–17 | medium |  |
+| US-CO | 14 | — | 14–15, 16–17 | medium |  |
 | US-CT | 16 | under 18 | 14–15, 16–17 | high |  |
 | US-DC | 14 | under 18 | 14–15, 16–17 | high |  |
 | US-DE | 14 | under 18 | 14–15, 16–17 | high |  |
 | US-FL | 14 | — | 14–15, 16–17 | high |  |
 | US-GA | 12 | under 16 | 12–15, 16–17 | high |  |
-| US-HI | 14 | under 18 | 14–15, 16–17 | high |  |
+| US-HI | 14 | under 18 | 14–15, 16–17 | high, medium |  |
 | US-IA | 14 | — | 14–15, 16–17 | high |  |
 | US-ID | 14 | — | 14–15, 16–17 | high |  |
 | US-IL | 14 | under 16 | 14–15, 16–17 | high | 2025-01-01 |
-| US-IN | 14 | — | 14–15, 16–17 | high, medium | 2025-01-01 |
+| US-IN | 14 | — | 14–15, 16–17 | medium | 2025-01-01 |
 | US-KS | 14 | under 16 | 14–15, 16–17 | high |  |
 | US-KY | 14 | — | 14–15, 16–17 | high |  |
 | US-LA | 14 | under 18 | 14–15, 16, 17 | high |  |
@@ -145,22 +146,22 @@ As of 2026-10-11. "Permit" is the age below which a work permit or employment ce
 | US-MO | 14 | under 16 | 14–15, 16–17 | high |  |
 | US-MS | — | — | 14–15, 16–17 | medium |  |
 | US-MT | 14 | — | 14–15, 16–17 | high |  |
-| US-NC | 14 | under 18 | 14–15, 16–17 | high |  |
+| US-NC | 14 | under 18 | 14–15, 16–17 | high, medium |  |
 | US-ND | 14 | under 16 | 14–15, 16–17 | high |  |
-| US-NE | 14 | under 16 | 14–15, 16–17 | high |  |
+| US-NE | 14 | under 16 | 14–15, 16–17 | high, medium |  |
 | US-NH | 12 | under 16 | 14–15, 16–17 | high |  |
-| US-NJ | 14 | under 18 | 14–15, 16–17 | high, medium |  |
-| US-NM | 14 | under 16 | 14–15, 16–17 | medium |  |
+| US-NJ | 14 | under 18 | 14–15, 16–17 | medium |  |
+| US-NM | 14 | under 16 | 14–15, 16–17 | high, medium |  |
 | US-NV | — | under 14 | 14–15, 16–17 | high |  |
-| US-NY | 14 | under 18 | 14–15, 16–17 | high |  |
+| US-NY | 14 | under 18 | 14–15, 16–17 | high, medium |  |
 | US-OH | 14 | under 18 | 14–15, 16–17 | high |  |
-| US-OK | 14 | under 16 | 14–15, 16–17 | high |  |
-| US-OR | 14 | under 18 | 14–15, 16–17 | high |  |
+| US-OK | 14 | under 16 | 14–15, 16–17 | medium |  |
+| US-OR | 14 | under 18 | 14–15, 16–17 | medium |  |
 | US-PA | 14 | under 18 | 14–15, 16–17 | high |  |
 | US-RI | 14 | under 16 | 14–15, 16–17 | high |  |
-| US-SC | 14 | — | 14–15, 16–17 | high |  |
+| US-SC | 14 | — | 14–15, 16–17 | medium |  |
 | US-SD | — | — | 0–13, 14–15, 16–17 | high |  |
-| US-TN | 14 | — | 14–15, 16–17 | high |  |
+| US-TN | 14 | — | 14–15, 16–17 | medium |  |
 | US-TX | 14 | — | 14–15, 16–17 | high |  |
 | US-UT | — | — | 14–15, 16–17 | high | 2024-05-01 |
 | US-VA | 14 | under 16 | 14–15, 16–17 | high, medium |  |
@@ -171,6 +172,14 @@ As of 2026-10-11. "Permit" is the age below which a work permit or employment ce
 | US-WY | 14 | — | 14–15, 16–17 | high |  |
 
 Federal law covers most employers (any enterprise with $500,000 in annual sales, and many smaller ones through individual coverage). The checker always applies it alongside the state's.
+
+## How the tables were checked
+
+Each limit's `citations` name the provisions it comes from, and each `sourceUrl` links the text. The tables were compiled with AI-assisted research against those sources, on the date in `AS_OF` (see [Authorship](#authorship)). **They have not been reviewed by a lawyer.** Where a statute was ambiguous or conditional, the stricter reading is encoded and the `note` says so.
+
+## Not legal advice
+
+Child labor law changes often, at both levels, and several states have rewritten theirs since 2023. This package is a tool to catch mistakes in a schedule; it does not tell an employer that a schedule is lawful. The employer remains responsible for the law that applies to it, including the parts this package does not cover (below). If you find a value that is wrong, please open an issue with the provision and a link.
 
 ## Not covered
 
@@ -183,6 +192,24 @@ Federal law covers most employers (any enterprise with $500,000 in annual sales,
 
 Every number needs a linkable source. A correction should cite the provision, link the official text if it can be reached, and say what changed and from when. Changes in the law are new `effectiveFrom` dates, not edits that rewrite the past.
 
+## Testing
+
+```sh
+npm test
+```
+
+Node's built-in test runner, no framework. CI runs the suite on Node 18–24 and again under a non-UTC `TZ`.
+
+## Authorship
+
+This package was written by [Claude](https://www.anthropic.com/claude) (Claude Opus 5.5, Anthropic's AI model), working in Claude Code at the direction of Drew Thomas. Claude wrote the code and the tests and did the research behind the tables. Drew decided what the package should do, and publishes and maintains it. Commits that Claude wrote say so in a `Co-Authored-By` trailer.
+
+## Related packages
+
+- **[age-of-majority](https://github.com/drewthomas00/age-of-majority)** — the age of majority and the digital-consent age by jurisdiction
+- **[tcpa-quiet-hours](https://github.com/drewthomas00/tcpa-quiet-hours)** — is it legal to send this marketing message right now, in the recipient's local time
+- **[pg-cron-lease](https://github.com/drewthomas00/pg-cron-lease)** — make an in-process cron job a singleton across replicas, using Postgres
+
 ## License
 
-MIT
+MIT © [Drew Thomas](https://drewthomasbuilds.com)
