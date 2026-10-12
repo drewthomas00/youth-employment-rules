@@ -107,7 +107,7 @@ rulesFor('US-NY', { age: 16, on: '2026-10-12' }).maxHoursSchoolWeek;
 
 - `null` means the jurisdiction was checked and sets no limit there; federal law may still.
 - Where a statute's rule depends on something the shape cannot hold — a parent's written consent, a high-school diploma, an industry list, a weekday — the **stricter** reading is encoded and the band's `note` says so. A checker built on these tables will sometimes flag a lawful shift; it should never pass an unlawful one because of the encoding. Known cases include Michigan 14–15 (3 hours on every day of a school week), Pennsylvania 16–17 (8 hours on any day), New Jersey 16–17 (8/40 all year), New York 16–17 (no vacation midnight), Michigan 16–17 (10:30 p.m. on Fridays and Saturdays outside a vacation, and 8 hours a day for the weekly average), Washington 16–17 (no 5 a.m. start on vacation days), and North Carolina 14–15 (whose hours bind only employers outside the FLSA).
-- Meal breaks are the rules written for minors (23 states). A state's meal or rest break rule for all employees — California's, New York's, Colorado's and others — applies to minors too, but is not in these tables: check it separately.
+- Meal breaks are the rules written for minors (23 states). A state's meal or rest break rule for all employees — California's, New York's, Colorado's and others — applies to minors too, but is not in these tables: check it with [work-break-rules](https://github.com/drewthomas00/work-break-rules).
 - Connecticut's minimum age of 16 is its floor for mercantile and other named industries; the band notes say which work it does not reach.
 - Times past midnight are written on a 24-hour-plus clock: `'24:30'` is 12:30 a.m. the next morning.
 - Every entry has a `confidence`: **high** when the primary text (statute, regulation or official code site) was read; **medium** when only an official summary or a reputable copy of the statute could be reached.
@@ -206,6 +206,7 @@ This package was written by [Claude](https://www.anthropic.com/claude) (Claude O
 
 ## Related packages
 
+- **[work-break-rules](https://github.com/drewthomas00/work-break-rules)** — does this shift give the meal and rest breaks the law requires? US states and DC, for adult employees
 - **[age-of-majority](https://github.com/drewthomas00/age-of-majority)** — the age of majority and the digital-consent age by jurisdiction
 - **[tcpa-quiet-hours](https://github.com/drewthomas00/tcpa-quiet-hours)** — is it legal to send this marketing message right now, in the recipient's local time
 - **[pg-cron-lease](https://github.com/drewthomas00/pg-cron-lease)** — make an in-process cron job a singleton across replicas, using Postgres
